@@ -1,11 +1,160 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <title>我的个人网站</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>光纤织网智守城脉 - 城市生命线智能监测</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
 </head>
-<body>
-    <h1>你好，世界！</h1>
-    <p>这是我用 GitHub Pages 搭建的第一个网站。</p>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="font-bold text-xl text-blue-600">光脉智联</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#intro" class="hover:text-blue-600">简介</a>
+                    <a href="#tech" class="hover:text-blue-600">技术展示</a>
+                    <a href="#cases" class="hover:text-blue-600">落地展示</a>
+                    <a href="#pricing" class="hover:text-blue-600">收费模式</a>
+                    <a href="#team" class="hover:text-blue-600">研发团队</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="intro" class="pt-32 pb-20 bg-blue-900 text-white">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">光纤织网 智守城脉</h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto text-blue-100">
+                针对全国超290万公里地下管线和百万座城市桥梁的老化风险 [cite: 34, 48]，我们以分布式光纤传感技术为底座 [cite: 46]，打造全域感知与智能预警的整体解决方案 [cite: 35]。
+            </p>
+        </div>
+    </section>
+
+    <section id="tech" class="py-20">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">核心技术指标</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 text-blue-600">硬件全域感知</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li>单套设备最大探测距离达 25 公里 [cite: 244]。</li>
+                        <li>事件定位精度 ≤5 米，报警响应时间 ≤5 秒 [cite: 244]。</li>
+                        <li>采用结构增敏与空间压缩感知技术，灵敏度提升 30% 以上 [cite: 254]。</li>
+                        <li>事件识别准确率 ≥93%，误报率 ≤5% [cite: 244]。</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 text-blue-600">光脉智联 SaaS 平台</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li>内置 AI 声纹识别算法，自动识别管道泄漏、违规施工及微形变 [cite: 226]。</li>
+                        <li>集成 GIS 地理信息系统，支持二维/三维可视化数字孪生展示 [cite: 227]。</li>
+                        <li>底层采用国密 SM4 标准加密，提供零信任架构防护 [cite: 273, 276]。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cases" class="py-20 bg-slate-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">真实落地案例</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 class="font-bold text-lg mb-2">珠海澳门拱北输水工程</h4>
+                    <p class="text-sm text-slate-500 mb-4">全长超 15 公里输水管道 [cite: 280]。</p>
+                    <p class="text-slate-600">成功识别沿线第三方施工隐患 23 起，精准预警微小泄漏隐患 2 起 [cite: 293]。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 class="font-bold text-lg mb-2">济南东湖调水工程</h4>
+                    <p class="text-sm text-slate-500 mb-4">全长 8.1 公里输水隧洞 [cite: 295]。</p>
+                    <p class="text-slate-600">成功捕捉隧洞衬砌 3 处微小形变隐患，系统数据准确率达 96% 以上 [cite: 298]。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 class="font-bold text-lg mb-2">某县域燃气管网监测</h4>
+                    <p class="text-sm text-slate-500 mb-4">总长 320 公里燃气管网 [cite: 301]。</p>
+                    <p class="text-slate-600">成功识别违规开挖等振动隐患 17 起，误报率降至 3% 以下 [cite: 316]。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-20">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">三级盈利体系</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="border p-8 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-bold mb-2">基础硬件建设</h3>
+                    <p class="text-slate-500 mb-6">一次性投入，低门槛接入</p>
+                    <ul class="space-y-2 text-slate-600 mb-8">
+                        <li>设备标价：35 万元/台 [cite: 353]。</li>
+                        <li>管网综合报价：5-8 万元/公里 [cite: 353]。</li>
+                        <li>核心部件 100% 国产化替代 [cite: 143]。</li>
+                    </ul>
+                </div>
+                <div class="border p-8 rounded-lg shadow-md border-blue-500 relative">
+                    <div class="absolute top-0 right-0 bg-blue-500 text-white px-3 py-1 text-sm rounded-bl-lg rounded-tr-lg">核心模式</div>
+                    <h3 class="text-xl font-bold mb-2">SaaS 订阅服务</h3>
+                    <p class="text-slate-500 mb-6">按年付费，持续升级</p>
+                    <ul class="space-y-2 text-slate-600 mb-8">
+                        <li>基础版：3 万元/年/百公里 [cite: 373]。</li>
+                        <li>专业版：8 万元/年/百公里 [cite: 374]。</li>
+                        <li>旗舰版：20 万元/年/项目 [cite: 375]。</li>
+                    </ul>
+                </div>
+                <div class="border p-8 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-bold mb-2">数据安全与增值</h3>
+                    <p class="text-slate-500 mb-6">针对政企客户的定制化服务</p>
+                    <ul class="space-y-2 text-slate-600 mb-8">
+                        <li>私有化部署费：30万-100 万元 [cite: 380]。</li>
+                        <li>收取 10%-15% 的年度系统安全运维费 [cite: 380]。</li>
+                        <li>提供数据安全合规审计及 API 二次开发授权 [cite: 383, 386]。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="py-20 bg-slate-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">核心研发团队</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-blue-600">
+                    <h4 class="font-bold text-xl mb-1">刘骏腾</h4>
+                    <p class="text-blue-600 text-sm mb-3">团队负责人 / 核心技术研发</p>
+                    <p class="text-slate-600 text-sm">光电信息科学与工程专业。深耕光纤传感技术研究，主导分布式光纤声学传感（DAS）系统及核心部件的研发 [cite: 538]。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 class="font-bold text-xl mb-1">王曦</h4>
+                    <p class="text-blue-600 text-sm mb-3">Web 前端开发交互</p>
+                    <p class="text-slate-600 text-sm">负责光纤传感监测系统的前端界面开发与数据可视化呈现，打造可视化操作界面 [cite: 539]。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 class="font-bold text-xl mb-1">陈钇夫</h4>
+                    <p class="text-blue-600 text-sm mb-3">商业化运营</p>
+                    <p class="text-slate-600 text-sm">主导项目市场定位及营销策略，对接市政、能源等市场渠道，构建三维盈利模式 [cite: 540]。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 class="font-bold text-xl mb-1">邢嫣然</h4>
+                    <p class="text-blue-600 text-sm mb-3">系统底层安全与保密技术</p>
+                    <p class="text-slate-600 text-sm">构建系统底层安全防护体系，保障海量监测数据的保密性与完整性 [cite: 541]。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 class="font-bold text-xl mb-1">田赞</h4>
+                    <p class="text-blue-600 text-sm mb-3">生产制造 / 技术落地</p>
+                    <p class="text-slate-600 text-sm">应用物理学专业。负责核心产品样机试制与生产工艺优化，推动技术向工业化产品转化 [cite: 545]。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center">
+        <p>© 2026 光纤织网智守城脉团队. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
