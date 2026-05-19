@@ -22,17 +22,17 @@
         .delay-4 { transition-delay: 400ms; }
         .delay-5 { transition-delay: 500ms; }
 
-        /* 弹窗样式优化 */
+        /* 弹窗样式优化 - 修复居中问题 */
         dialog::backdrop {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(8px);
         }
         dialog[open] {
-            animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         @keyframes modalFadeIn {
-            from { opacity: 0; transform: translate(-50%, -40%) scale(0.95); }
-            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
         
         /* 科技感背景光晕动画 */
@@ -52,16 +52,16 @@
         <div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-indigo-400/10 rounded-full blur-[150px] glow-blob" style="animation-delay: -4s;"></div>
     </div>
 
-    <nav class="fixed w-full bg-white/70 backdrop-blur-xl shadow-sm z-50 border-b border-white/50">
+    <nav class="fixed w-full bg-white/80 backdrop-blur-lg shadow-sm z-50 border-b border-slate-200 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center h-16">
-                <div class="font-bold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-cyan-500 tracking-tight">光脉智联</div>
+                <div class="font-extrabold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-cyan-600 tracking-tight">光脉智联</div>
                 <div class="hidden md:flex space-x-12">
-                    <a href="#intro" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">简介</a>
-                    <a href="#tech" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">核心技术</a>
-                    <a href="#cases" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">落地案例</a>
-                    <a href="#pricing" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">收费模式</a>
-                    <a href="#team" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">研发团队</a>
+                    <a href="#intro" class="text-slate-700 hover:text-blue-600 font-semibold transition-colors">简介</a>
+                    <a href="#tech" class="text-slate-700 hover:text-blue-600 font-semibold transition-colors">核心技术</a>
+                    <a href="#cases" class="text-slate-700 hover:text-blue-600 font-semibold transition-colors">落地案例</a>
+                    <a href="#pricing" class="text-slate-700 hover:text-blue-600 font-semibold transition-colors">收费模式</a>
+                    <a href="#team" class="text-slate-700 hover:text-blue-600 font-semibold transition-colors">研发团队</a>
                 </div>
             </div>
         </div>
@@ -167,129 +167,127 @@
             </div>
         </section>
 
-        <section id="team" class="w-full h-screen snap-start flex flex-col justify-between pt-40 pb-12 relative">
+        <section id="team" class="w-full h-screen snap-start flex flex-col justify-between pt-32 pb-12 relative">
             <div class="max-w-7xl mx-auto px-6 w-full my-auto">
-                <div class="text-center mb-20 fade-up-element">
+                <div class="text-center mb-16 fade-up-element">
                     <h2 class="text-5xl font-extrabold mb-6 text-slate-900 tracking-tight">核心研发团队</h2>
-                    <p class="text-slate-600 text-xl bg-white/50 backdrop-blur-sm inline-block px-8 py-3 rounded-full border border-slate-200/50 max-w-3xl">光脉智联团队由光电感知、大数据安全、商业化运营及智能制造领域的专家组成</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10 items-stretch">
-                    <div onclick="openModal('modal-liujunteng')" class="bg-white/80 backdrop-blur-md p-14 rounded-[2rem] shadow-xl border border-white hover:border-orange-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-1 hover:-translate-y-2 min-h-[420px] flex flex-col justify-center">
-                        <div class="w-32 h-32 bg-gradient-to-br from-slate-100 to-slate-50 text-slate-600 rounded-full mx-auto flex items-center justify-center font-black text-2xl mb-8 group-hover:scale-110 group-hover:ring-4 group-hover:ring-orange-200 transition-all duration-300 shadow-inner overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 items-stretch">
+                    <div onclick="openModal('modal-liujunteng')" class="bg-white/80 backdrop-blur-md p-8 rounded-[2rem] shadow-xl border border-white hover:border-blue-400 hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col items-center justify-start pt-10 group fade-up-element delay-1 hover:-translate-y-2 h-[340px]">
+                        <div class="w-28 h-28 bg-gradient-to-br from-slate-100 to-slate-50 text-slate-600 rounded-full flex items-center justify-center font-black text-2xl mb-6 group-hover:scale-110 group-hover:ring-4 group-hover:ring-blue-100 transition-all duration-300 shadow-inner overflow-hidden flex-shrink-0">
                             <img src="./images/liujunteng.jpg" alt="刘骏腾 头像" class="w-full h-full object-cover">
                         </div>
                         <h4 class="font-bold text-2xl mb-2 text-slate-900">刘骏腾</h4>
-                        <p class="text-orange-700 text-base font-semibold">团队负责人</p>
+                        <p class="text-blue-600 text-sm font-bold bg-blue-50 px-3 py-1 rounded-full mt-auto mb-4">团队负责人</p>
                     </div>
-                    <div onclick="openModal('modal-wangxi')" class="bg-white/80 backdrop-blur-md p-14 rounded-[2rem] shadow-xl border border-white hover:border-orange-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-2 hover:-translate-y-2 min-h-[420px] flex flex-col justify-center">
-                        <div class="w-32 h-32 bg-gradient-to-br from-slate-100 to-slate-50 text-slate-600 rounded-full mx-auto flex items-center justify-center font-black text-2xl mb-8 group-hover:scale-110 group-hover:ring-4 group-hover:ring-orange-200 transition-all duration-300 shadow-inner overflow-hidden">
+                    <div onclick="openModal('modal-wangxi')" class="bg-white/80 backdrop-blur-md p-8 rounded-[2rem] shadow-xl border border-white hover:border-blue-400 hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col items-center justify-start pt-10 group fade-up-element delay-2 hover:-translate-y-2 h-[340px]">
+                        <div class="w-28 h-28 bg-gradient-to-br from-slate-100 to-slate-50 text-slate-600 rounded-full flex items-center justify-center font-black text-2xl mb-6 group-hover:scale-110 group-hover:ring-4 group-hover:ring-blue-100 transition-all duration-300 shadow-inner overflow-hidden flex-shrink-0">
                             <img src="./images/wangxi.jpg" alt="王曦 头像" class="w-full h-full object-cover">
                         </div>
                         <h4 class="font-bold text-2xl mb-2 text-slate-900">王曦</h4>
-                        <p class="text-orange-700 text-base font-semibold">前端交互架构</p>
+                        <p class="text-blue-600 text-sm font-bold bg-blue-50 px-3 py-1 rounded-full mt-auto mb-4">前端交互架构</p>
                     </div>
-                    <div onclick="openModal('modal-chenyifu')" class="bg-white/80 backdrop-blur-md p-14 rounded-[2rem] shadow-xl border border-white hover:border-orange-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-3 hover:-translate-y-2 min-h-[420px] flex flex-col justify-center">
-                        <div class="w-32 h-32 bg-gradient-to-br from-slate-100 to-slate-50 text-slate-600 rounded-full mx-auto flex items-center justify-center font-black text-2xl mb-8 group-hover:scale-110 group-hover:ring-4 group-hover:ring-orange-200 transition-all duration-300 shadow-inner overflow-hidden">
+                    <div onclick="openModal('modal-chenyifu')" class="bg-white/80 backdrop-blur-md p-8 rounded-[2rem] shadow-xl border border-white hover:border-blue-400 hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col items-center justify-start pt-10 group fade-up-element delay-3 hover:-translate-y-2 h-[340px]">
+                        <div class="w-28 h-28 bg-gradient-to-br from-slate-100 to-slate-50 text-slate-600 rounded-full flex items-center justify-center font-black text-2xl mb-6 group-hover:scale-110 group-hover:ring-4 group-hover:ring-blue-100 transition-all duration-300 shadow-inner overflow-hidden flex-shrink-0">
                             <img src="./images/chenyifu.jpg" alt="陈钇夫 头像" class="w-full h-full object-cover">
                         </div>
                         <h4 class="font-bold text-2xl mb-2 text-slate-900">陈钇夫</h4>
-                        <p class="text-orange-700 text-base font-semibold">商业化运营</p>
+                        <p class="text-blue-600 text-sm font-bold bg-blue-50 px-3 py-1 rounded-full mt-auto mb-4">商业化运营</p>
                     </div>
-                    <div onclick="openModal('modal-xingyanran')" class="bg-white/80 backdrop-blur-md p-14 rounded-[2rem] shadow-xl border border-white hover:border-orange-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-4 hover:-translate-y-2 min-h-[420px] flex flex-col justify-center">
-                        <div class="w-32 h-32 bg-gradient-to-br from-slate-100 to-slate-50 text-slate-600 rounded-full mx-auto flex items-center justify-center font-black text-2xl mb-8 group-hover:scale-110 group-hover:ring-4 group-hover:ring-orange-200 transition-all duration-300 shadow-inner overflow-hidden">
+                    <div onclick="openModal('modal-xingyanran')" class="bg-white/80 backdrop-blur-md p-8 rounded-[2rem] shadow-xl border border-white hover:border-blue-400 hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col items-center justify-start pt-10 group fade-up-element delay-4 hover:-translate-y-2 h-[340px]">
+                        <div class="w-28 h-28 bg-gradient-to-br from-slate-100 to-slate-50 text-slate-600 rounded-full flex items-center justify-center font-black text-2xl mb-6 group-hover:scale-110 group-hover:ring-4 group-hover:ring-blue-100 transition-all duration-300 shadow-inner overflow-hidden flex-shrink-0">
                             <img src="./images/xingyanran.jpg" alt="邢嫣然 头像" class="w-full h-full object-cover">
                         </div>
                         <h4 class="font-bold text-2xl mb-2 text-slate-900">邢嫣然</h4>
-                        <p class="text-orange-700 text-base font-semibold">底层架构安全</p>
+                        <p class="text-blue-600 text-sm font-bold bg-blue-50 px-3 py-1 rounded-full mt-auto mb-4">底层架构安全</p>
                     </div>
-                    <div onclick="openModal('modal-tanzan')" class="bg-white/80 backdrop-blur-md p-14 rounded-[2rem] shadow-xl border border-white hover:border-orange-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-5 hover:-translate-y-2 min-h-[420px] flex flex-col justify-center">
-                        <div class="w-32 h-32 bg-gradient-to-br from-slate-100 to-slate-50 text-slate-600 rounded-full mx-auto flex items-center justify-center font-black text-2xl mb-8 group-hover:scale-110 group-hover:ring-4 group-hover:ring-orange-200 transition-all duration-300 shadow-inner overflow-hidden">
+                    <div onclick="openModal('modal-tanzan')" class="bg-white/80 backdrop-blur-md p-8 rounded-[2rem] shadow-xl border border-white hover:border-blue-400 hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col items-center justify-start pt-10 group fade-up-element delay-5 hover:-translate-y-2 h-[340px]">
+                        <div class="w-28 h-28 bg-gradient-to-br from-slate-100 to-slate-50 text-slate-600 rounded-full flex items-center justify-center font-black text-2xl mb-6 group-hover:scale-110 group-hover:ring-4 group-hover:ring-blue-100 transition-all duration-300 shadow-inner overflow-hidden flex-shrink-0">
                             <img src="./images/tanzan.jpg" alt="田赞 头像" class="w-full h-full object-cover">
                         </div>
                         <h4 class="font-bold text-2xl mb-2 text-slate-900">田赞</h4>
-                        <p class="text-orange-700 text-base font-semibold">生产制造落地</p>
+                        <p class="text-blue-600 text-sm font-bold bg-blue-50 px-3 py-1 rounded-full mt-auto mb-4">生产制造落地</p>
                     </div>
                 </div>
             </div>
             
-            <footer class="w-full text-slate-400 font-medium text-base text-center pt-10 pb-6 relative z-20 mix-blend-multiply border-t border-slate-100 mt-auto">
+            <footer class="w-full text-slate-400 font-medium text-sm text-center pt-8 pb-4 relative z-20 mix-blend-multiply border-t border-slate-100 mt-auto">
                 <p>© 2026 光脉智联 - 光纤织网智守城脉团队. All rights reserved.</p>
             </footer>
         </section>
 
     </div>
 
-    <dialog id="modal-liujunteng" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-[2rem] p-12 max-w-xl w-[90%] shadow-2xl border border-slate-100 outline-none backdrop-blur-xl">
+    <dialog id="modal-liujunteng" class="fixed inset-0 m-auto bg-white rounded-[2rem] p-12 max-w-xl w-[90%] shadow-2xl border border-slate-100 outline-none backdrop-blur-xl">
         <div class="flex flex-col items-center">
             <div class="w-40 h-52 bg-slate-100 rounded-2xl shadow-inner mb-8 overflow-hidden border-4 border-white flex items-center justify-center ring-2 ring-slate-100">
                 <img src="./images/liujunteng.jpg" alt="刘骏腾 证件照" class="w-full h-full object-cover">
             </div>
             <h3 class="text-4xl font-extrabold text-slate-900 mb-3">刘骏腾</h3>
-            <p class="text-orange-700 font-bold bg-orange-50 px-5 py-2 rounded-full text-base mb-8 tracking-wide">团队负责人 / 核心技术研发</p>
+            <p class="text-blue-700 font-bold bg-blue-50 px-5 py-2 rounded-full text-sm mb-8 tracking-wide">团队负责人 / 核心技术研发</p>
             <p class="text-slate-600 text-lg leading-relaxed text-center mb-10 max-w-lg">
                 光电信息科学与工程专业。深耕分布式光纤传感技术研究数年，主导分布式光纤声学传感（DAS）系统及高灵敏度核心解调部件的底层技术研发。在结构增敏与空间压缩感知领域拥有多项核心技术突破。
             </p>
-            <button onclick="closeModal('modal-liujunteng')" class="px-10 py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 w-full text-lg">返回主页</button>
+            <button onclick="closeModal('modal-liujunteng')" class="px-10 py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 w-full text-lg">返回主页</button>
         </div>
     </dialog>
 
-    <dialog id="modal-wangxi" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-[2rem] p-12 max-w-xl w-[90%] shadow-2xl border border-slate-100 outline-none backdrop-blur-xl">
+    <dialog id="modal-wangxi" class="fixed inset-0 m-auto bg-white rounded-[2rem] p-12 max-w-xl w-[90%] shadow-2xl border border-slate-100 outline-none backdrop-blur-xl">
         <div class="flex flex-col items-center">
             <div class="w-40 h-52 bg-slate-100 rounded-2xl shadow-inner mb-8 overflow-hidden border-4 border-white flex items-center justify-center ring-2 ring-slate-100">
                 <img src="./images/wangxi.jpg" alt="王曦 证件照" class="w-full h-full object-cover">
             </div>
             <h3 class="text-4xl font-extrabold text-slate-900 mb-3">王曦</h3>
-            <p class="text-orange-700 font-bold bg-orange-50 px-5 py-2 rounded-full text-base mb-8 tracking-wide">Web 前端架构与交互</p>
+            <p class="text-blue-700 font-bold bg-blue-50 px-5 py-2 rounded-full text-sm mb-8 tracking-wide">Web 前端架构与交互</p>
             <p class="text-slate-600 text-lg leading-relaxed text-center mb-10 max-w-lg">
                 负责光纤传感安全监测系统的一线前端架构设计。专注于海量并发物联网数据的实时图形化渲染与大屏数字孪生呈现，利用高级交互动效打造高效、直观的城市生命线监测可视化界面。
             </p>
-            <button onclick="closeModal('modal-wangxi')" class="px-10 py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 w-full text-lg">返回主页</button>
+            <button onclick="closeModal('modal-wangxi')" class="px-10 py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 w-full text-lg">返回主页</button>
         </div>
     </dialog>
 
-    <dialog id="modal-chenyifu" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-[2rem] p-12 max-w-xl w-[90%] shadow-2xl border border-slate-100 outline-none backdrop-blur-xl">
+    <dialog id="modal-chenyifu" class="fixed inset-0 m-auto bg-white rounded-[2rem] p-12 max-w-xl w-[90%] shadow-2xl border border-slate-100 outline-none backdrop-blur-xl">
         <div class="flex flex-col items-center">
             <div class="w-40 h-52 bg-slate-100 rounded-2xl shadow-inner mb-8 overflow-hidden border-4 border-white flex items-center justify-center ring-2 ring-slate-100">
                 <img src="./images/chenyifu.jpg" alt="陈钇夫 证件照" class="w-full h-full object-cover">
             </div>
             <h3 class="text-4xl font-extrabold text-slate-900 mb-3">陈钇夫</h3>
-            <p class="text-orange-700 font-bold bg-orange-50 px-5 py-2 rounded-full text-base mb-8 tracking-wide">商业化运营总责</p>
+            <p class="text-blue-700 font-bold bg-blue-50 px-5 py-2 rounded-full text-sm mb-8 tracking-wide">商业化运营总责</p>
             <p class="text-slate-600 text-lg leading-relaxed text-center mb-10 max-w-lg">
                 主导本项目的全球市场定位与 B端 拓客营销策略。长期对接各地市政工程、国家骨干管网及清洁能源集团等核心头部渠道，成功构建并推行了项目独创的“基础硬件建设+SaaS订阅服务+安全增值”三维盈利商业生态。
             </p>
-            <button onclick="closeModal('modal-chenyifu')" class="px-10 py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 w-full text-lg">返回主页</button>
+            <button onclick="closeModal('modal-chenyifu')" class="px-10 py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 w-full text-lg">返回主页</button>
         </div>
     </dialog>
 
-    <dialog id="modal-xingyanran" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-[2rem] p-12 max-w-xl w-[90%] shadow-2xl border border-slate-100 outline-none backdrop-blur-xl">
+    <dialog id="modal-xingyanran" class="fixed inset-0 m-auto bg-white rounded-[2rem] p-12 max-w-xl w-[90%] shadow-2xl border border-slate-100 outline-none backdrop-blur-xl">
         <div class="flex flex-col items-center">
             <div class="w-40 h-52 bg-slate-100 rounded-2xl shadow-inner mb-8 overflow-hidden border-4 border-white flex items-center justify-center ring-2 ring-slate-100">
                 <img src="./images/xingyanran.jpg" alt="邢嫣然 证件照" class="w-full h-full object-cover">
             </div>
             <h3 class="text-4xl font-extrabold text-slate-900 mb-3">邢嫣然</h3>
-            <p class="text-orange-700 font-bold bg-orange-50 px-5 py-2 rounded-full text-base mb-8 tracking-wide">底层架构安全与保密技术</p>
+            <p class="text-blue-700 font-bold bg-blue-50 px-5 py-2 rounded-full text-sm mb-8 tracking-wide">底层架构安全与保密技术</p>
             <p class="text-slate-600 text-lg leading-relaxed text-center mb-10 max-w-lg">
                 构建系统顶级的底层数据反劫持与数据防护体系。专攻城市脉络海量安全监测敏感数据的加密算法，基于商用国密 SM4 加密标准，为主导产品量身定制了全链路的零信任网络架构防护。
             </p>
-            <button onclick="closeModal('modal-xingyanran')" class="px-10 py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 w-full text-lg">返回主页</button>
+            <button onclick="closeModal('modal-xingyanran')" class="px-10 py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 w-full text-lg">返回主页</button>
         </div>
     </dialog>
 
-    <dialog id="modal-tanzan" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-[2rem] p-12 max-w-xl w-[90%] shadow-2xl border border-slate-100 outline-none backdrop-blur-xl">
+    <dialog id="modal-tanzan" class="fixed inset-0 m-auto bg-white rounded-[2rem] p-12 max-w-xl w-[90%] shadow-2xl border border-slate-100 outline-none backdrop-blur-xl">
         <div class="flex flex-col items-center">
             <div class="w-40 h-52 bg-slate-100 rounded-2xl shadow-inner mb-8 overflow-hidden border-4 border-white flex items-center justify-center ring-2 ring-slate-100">
                 <img src="./images/tanzan.jpg" alt="田赞 证件照" class="w-full h-full object-cover">
             </div>
             <h3 class="text-4xl font-extrabold text-slate-900 mb-3">田赞</h3>
-            <p class="text-orange-700 font-bold bg-orange-50 px-5 py-2 rounded-full text-base mb-8 tracking-wide">生产制造与技术落地</p>
+            <p class="text-blue-700 font-bold bg-blue-50 px-5 py-2 rounded-full text-sm mb-8 tracking-wide">生产制造与技术落地</p>
             <p class="text-slate-600 text-lg leading-relaxed text-center mb-10 max-w-lg">
                 应用物理学专业。全面负责核心硬件传感样机的试制、供应链管理与工业化生产工艺优化。致力于缩短从实验室研究成果到量产工业级安全设备的转化周期，确保设备部件 100%国产化替代方案的高效闭环。
             </p>
-            <button onclick="closeModal('modal-tanzan')" class="px-10 py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 w-full text-lg">返回主页</button>
+            <button onclick="closeModal('modal-tanzan')" class="px-10 py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 w-full text-lg">返回主页</button>
         </div>
     </dialog>
-
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -303,9 +301,6 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('section-active');
-                    } else {
-                        // 如果你不希望回滚时重复动画，可以注释掉下面这行
-                        // entry.target.classList.remove('section-active');
                     }
                 });
             }, observerOptions);
@@ -323,7 +318,10 @@
 
         function closeModal(id) {
             const modal = document.getElementById(id);
-            if (modal) modal.close();
+            if (modal) {
+                // 添加关闭动画类名（如有需要后续可增加关闭动画）
+                modal.close();
+            }
         }
     </script>
 </body>
