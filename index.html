@@ -41,7 +41,7 @@
             transition-delay: 500ms;
         }
 
-        /* 弹窗样式优化 - 修复居中问题 */
+        /* 弹窗样式优化 - 完美居中 */
         dialog {
             position: fixed;
             top: 50%;
@@ -57,9 +57,9 @@
             overflow: visible;
         }
         dialog::backdrop {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
         }
         dialog[open] {
             animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -70,7 +70,7 @@
         @keyframes modalFadeIn {
             from {
                 opacity: 0;
-                transform: translate(-50%, -50%) scale(0.92);
+                transform: translate(-50%, -50%) scale(0.9);
             }
             to {
                 opacity: 1;
@@ -80,7 +80,7 @@
         @keyframes modalContentIn {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(15px);
             }
             to {
                 opacity: 1;
@@ -120,14 +120,6 @@
         .nav-link:hover::after {
             width: 100%;
         }
-
-        /* 网格背景 */
-        .grid-bg {
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans h-full m-0 relative">
@@ -145,7 +137,7 @@
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center shadow-md shadow-blue-500/25 flex-shrink-0">
                     <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                 </div>
                 <span class="font-bold text-xl md:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-600 tracking-tight">光脉智联</span>
@@ -158,11 +150,11 @@
                 <a href="#pricing" class="nav-link px-4 py-2 text-slate-600 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-slate-50/80 text-sm lg:text-base">收费模式</a>
                 <a href="#team" class="nav-link px-4 py-2 text-slate-600 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-slate-50/80 text-sm lg:text-base">研发团队</a>
             </div>
-            <!-- 移动端菜单按钮（占位，保持结构） -->
+            <!-- 移动端菜单按钮 -->
             <div class="md:hidden">
                 <button class="p-2 text-slate-500 hover:text-blue-600 transition-colors">
                     <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
             </div>
@@ -172,28 +164,25 @@
     <!-- 主滚动容器 -->
     <div class="scroll-container h-full overflow-y-auto snap-y snap-mandatory scroll-smooth relative z-10">
 
-        <!-- 首屏 -->
-        <section id="intro" class="w-full h-screen snap-start flex items-center justify-center bg-slate-900 text-white relative overflow-hidden">
-            <div class="absolute inset-0 grid-bg opacity-40"></div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-blue-600/20 blur-[130px] rounded-full pointer-events-none"></div>
+        <!-- ============ 首屏 - 简介（背景图替换） ============ -->
+        <section id="intro" class="w-full h-screen snap-start flex items-center justify-center bg-slate-900 text-white relative overflow-hidden" style="background-image: url('./images/home_page.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+            <!-- 暗色遮罩层，确保文字可读 -->
+            <div class="absolute inset-0 bg-slate-900/75 backdrop-brightness-50"></div>
+            <!-- 蓝色光晕保留 -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-blue-600/15 blur-[130px] rounded-full pointer-events-none"></div>
 
             <div class="max-w-5xl mx-auto px-6 text-center fade-up-element relative z-10">
-                <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-8 lg:mb-10 tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400 leading-tight">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-8 lg:mb-10 tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-300 leading-tight drop-shadow-lg">
                     光纤织网 智守城脉
                 </h1>
-                <p class="text-lg md:text-2xl lg:text-3xl mb-12 lg:mb-16 max-w-4xl mx-auto text-blue-100/80 leading-relaxed font-light px-2">
+                <p class="text-lg md:text-2xl lg:text-3xl mb-12 lg:mb-16 max-w-4xl mx-auto text-blue-100/90 leading-relaxed font-light px-2 drop-shadow-md">
                     针对全国超 <strong class="text-white font-semibold">290 万公里</strong> 地下管线和百万座城市桥梁的老化风险，以分布式光纤传感技术为底座，打造全域感知与智能预警的整体解决方案。
                 </p>
-                <div class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium animate-bounce mt-6 lg:mt-10 cursor-default">
-                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-                    </svg>
-                    向下滚动探索
-                </div>
+                <!-- 已移除"向下滚动探索"跳动按钮 -->
             </div>
         </section>
 
-        <!-- 核心技术 -->
+        <!-- ============ 核心技术 ============ -->
         <section id="tech" class="w-full h-screen snap-start flex items-center justify-center pt-24 pb-16 md:pt-32 md:pb-16">
             <div class="max-w-7xl mx-auto px-6 w-full">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-12 md:mb-20 text-slate-900 fade-up-element tracking-tight">核心技术指标</h2>
@@ -220,7 +209,7 @@
             </div>
         </section>
 
-        <!-- 落地案例 -->
+        <!-- ============ 落地案例 ============ -->
         <section id="cases" class="w-full h-screen snap-start flex items-center justify-center pt-24 pb-16 md:pt-32 md:pb-16">
             <div class="max-w-7xl mx-auto px-6 w-full">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-12 md:mb-20 text-slate-900 fade-up-element tracking-tight">真实落地案例</h2>
@@ -247,7 +236,7 @@
             </div>
         </section>
 
-        <!-- 收费模式 -->
+        <!-- ============ 收费模式 ============ -->
         <section id="pricing" class="w-full h-screen snap-start flex items-center justify-center pt-28 pb-16 md:pt-40 md:pb-20">
             <div class="max-w-7xl mx-auto px-6 w-full">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-12 md:mb-20 text-slate-900 fade-up-element tracking-tight">三级盈利生态</h2>
@@ -281,7 +270,7 @@
             </div>
         </section>
 
-        <!-- 研发团队 -->
+        <!-- ============ 研发团队 ============ -->
         <section id="team" class="w-full min-h-screen snap-start flex flex-col justify-between pt-28 pb-8 md:pt-40 md:pb-12 relative">
             <div class="max-w-7xl mx-auto px-6 w-full my-auto">
                 <div class="text-center mb-12 md:mb-20 fade-up-element">
@@ -291,44 +280,44 @@
                     </p>
                 </div>
 
-                <!-- 团队成员卡片 - 优化对齐 -->
+                <!-- 团队成员卡片 - 圆形头像使用1-5.jpg -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 items-stretch">
-                    <!-- 刘骏腾 -->
+                    <!-- 刘骏腾 - 头像使用 1.jpg -->
                     <div onclick="openModal('modal-liujunteng')" class="bg-white/80 backdrop-blur-md p-8 md:p-10 lg:p-8 xl:p-10 rounded-[2rem] shadow-xl border border-white hover:border-orange-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-1 hover:-translate-y-2 flex flex-col items-center justify-start h-full">
                         <div class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 bg-gradient-to-br from-slate-100 to-slate-50 rounded-full mx-auto flex items-center justify-center font-black text-xl md:text-2xl mb-5 md:mb-6 lg:mb-8 group-hover:scale-105 group-hover:ring-4 group-hover:ring-orange-200 transition-all duration-300 shadow-inner overflow-hidden flex-shrink-0">
-                            <img src="./images/liujunteng.jpg" alt="刘骏腾 头像" class="w-full h-full object-cover">
+                            <img src="./images/1.jpg" alt="刘骏腾 头像" class="w-full h-full object-cover">
                         </div>
                         <h4 class="font-bold text-lg md:text-xl lg:text-2xl mb-1 md:mb-2 text-slate-900">刘骏腾</h4>
                         <p class="text-orange-700 text-sm md:text-base font-semibold">团队负责人</p>
                     </div>
-                    <!-- 王曦 -->
+                    <!-- 王曦 - 头像使用 2.jpg -->
                     <div onclick="openModal('modal-wangxi')" class="bg-white/80 backdrop-blur-md p-8 md:p-10 lg:p-8 xl:p-10 rounded-[2rem] shadow-xl border border-white hover:border-orange-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-2 hover:-translate-y-2 flex flex-col items-center justify-start h-full">
                         <div class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 bg-gradient-to-br from-slate-100 to-slate-50 rounded-full mx-auto flex items-center justify-center font-black text-xl md:text-2xl mb-5 md:mb-6 lg:mb-8 group-hover:scale-105 group-hover:ring-4 group-hover:ring-orange-200 transition-all duration-300 shadow-inner overflow-hidden flex-shrink-0">
-                            <img src="./images/wangxi.jpg" alt="王曦 头像" class="w-full h-full object-cover">
+                            <img src="./images/2.jpg" alt="王曦 头像" class="w-full h-full object-cover">
                         </div>
                         <h4 class="font-bold text-lg md:text-xl lg:text-2xl mb-1 md:mb-2 text-slate-900">王曦</h4>
                         <p class="text-orange-700 text-sm md:text-base font-semibold">前端交互架构</p>
                     </div>
-                    <!-- 陈钇夫 -->
+                    <!-- 陈钇夫 - 头像使用 3.jpg -->
                     <div onclick="openModal('modal-chenyifu')" class="bg-white/80 backdrop-blur-md p-8 md:p-10 lg:p-8 xl:p-10 rounded-[2rem] shadow-xl border border-white hover:border-orange-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-3 hover:-translate-y-2 flex flex-col items-center justify-start h-full">
                         <div class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 bg-gradient-to-br from-slate-100 to-slate-50 rounded-full mx-auto flex items-center justify-center font-black text-xl md:text-2xl mb-5 md:mb-6 lg:mb-8 group-hover:scale-105 group-hover:ring-4 group-hover:ring-orange-200 transition-all duration-300 shadow-inner overflow-hidden flex-shrink-0">
-                            <img src="./images/chenyifu.jpg" alt="陈钇夫 头像" class="w-full h-full object-cover">
+                            <img src="./images/3.jpg" alt="陈钇夫 头像" class="w-full h-full object-cover">
                         </div>
                         <h4 class="font-bold text-lg md:text-xl lg:text-2xl mb-1 md:mb-2 text-slate-900">陈钇夫</h4>
                         <p class="text-orange-700 text-sm md:text-base font-semibold">商业化运营</p>
                     </div>
-                    <!-- 邢嫣然 -->
+                    <!-- 邢嫣然 - 头像使用 4.jpg -->
                     <div onclick="openModal('modal-xingyanran')" class="bg-white/80 backdrop-blur-md p-8 md:p-10 lg:p-8 xl:p-10 rounded-[2rem] shadow-xl border border-white hover:border-orange-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-4 hover:-translate-y-2 flex flex-col items-center justify-start h-full">
                         <div class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 bg-gradient-to-br from-slate-100 to-slate-50 rounded-full mx-auto flex items-center justify-center font-black text-xl md:text-2xl mb-5 md:mb-6 lg:mb-8 group-hover:scale-105 group-hover:ring-4 group-hover:ring-orange-200 transition-all duration-300 shadow-inner overflow-hidden flex-shrink-0">
-                            <img src="./images/xingyanran.jpg" alt="邢嫣然 头像" class="w-full h-full object-cover">
+                            <img src="./images/4.jpg" alt="邢嫣然 头像" class="w-full h-full object-cover">
                         </div>
                         <h4 class="font-bold text-lg md:text-xl lg:text-2xl mb-1 md:mb-2 text-slate-900">邢嫣然</h4>
                         <p class="text-orange-700 text-sm md:text-base font-semibold">底层架构安全</p>
                     </div>
-                    <!-- 田赞 -->
+                    <!-- 田赞 - 头像使用 5.jpg -->
                     <div onclick="openModal('modal-tanzan')" class="bg-white/80 backdrop-blur-md p-8 md:p-10 lg:p-8 xl:p-10 rounded-[2rem] shadow-xl border border-white hover:border-orange-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-5 hover:-translate-y-2 flex flex-col items-center justify-start h-full">
                         <div class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 bg-gradient-to-br from-slate-100 to-slate-50 rounded-full mx-auto flex items-center justify-center font-black text-xl md:text-2xl mb-5 md:mb-6 lg:mb-8 group-hover:scale-105 group-hover:ring-4 group-hover:ring-orange-200 transition-all duration-300 shadow-inner overflow-hidden flex-shrink-0">
-                            <img src="./images/tanzan.jpg" alt="田赞 头像" class="w-full h-full object-cover">
+                            <img src="./images/5.jpg" alt="田赞 头像" class="w-full h-full object-cover">
                         </div>
                         <h4 class="font-bold text-lg md:text-xl lg:text-2xl mb-1 md:mb-2 text-slate-900">田赞</h4>
                         <p class="text-orange-700 text-sm md:text-base font-semibold">生产制造落地</p>
@@ -344,7 +333,7 @@
 
     </div>
 
-    <!-- ============ 弹窗 Modals - 修复居中 ============ -->
+    <!-- ============ 弹窗 Modals - 证件照保持不变 ============ -->
     <!-- 刘骏腾 -->
     <dialog id="modal-liujunteng">
         <div class="modal-inner bg-white rounded-[2rem] p-8 md:p-12 shadow-2xl border border-slate-100 max-w-xl w-[90vw] mx-auto overflow-y-auto max-h-[85vh]">
