@@ -50,6 +50,16 @@
         .delay-200 { animation-delay: 200ms; }
         .delay-300 { animation-delay: 300ms; }
         .delay-400 { animation-delay: 400ms; }
+        
+        /* 保证左右两栏内容顶部严格对齐 */
+        .align-grid-top > div {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .align-grid-top .text-content {
+            flex: 1;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
@@ -133,13 +143,13 @@
                 </div>
             </div>
 
-            <!-- 落地配置 + 技术亮点：使用 grid 自动等高，对齐且填充右侧空间 -->
+            <!-- ========== 落地配置 + 技术亮点（严格对齐版） ========== -->
             <div class="bg-gradient-to-r from-slate-50 to-white rounded-3xl p-6 md:p-10 shadow-md border border-slate-100 section-fade delay-200">
                 <div class="grid md:grid-cols-2 gap-8">
                     <!-- 落地配置 -->
                     <div class="flex items-start gap-4">
                         <div class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center text-2xl flex-shrink-0">⚙️</div>
-                        <div class="w-full">
+                        <div class="flex-1">
                             <h2 class="text-2xl font-bold text-slate-800 mb-4">落地配置</h2>
                             <ul class="space-y-3 text-slate-600">
                                 <li class="flex gap-2"><span class="text-indigo-500 font-bold">▸</span> 沿管线全线布设 <strong>结构增敏型光纤传感阵列</strong>（三分量声学检波器）</li>
@@ -149,10 +159,10 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- 技术亮点 -->
+                    <!-- 技术亮点（完美对齐） -->
                     <div class="flex items-start gap-4">
                         <div class="w-12 h-12 rounded-xl bg-cyan-50 flex items-center justify-center text-2xl flex-shrink-0">🧠</div>
-                        <div class="w-full">
+                        <div class="flex-1 flex flex-col h-full">
                             <h2 class="text-2xl font-bold text-slate-800 mb-4">技术亮点</h2>
                             <div class="flex flex-wrap gap-2 mb-3">
                                 <span class="tech-tag text-xs px-3 py-1 rounded-full text-blue-700">多参数复合传感</span>
@@ -227,7 +237,7 @@
                 </div>
             </div>
 
-            <!-- 相关案例推荐（修正链接：指向 case2.html 和 case3.html） -->
+            <!-- 相关案例推荐 -->
             <div class="mt-12 section-fade delay-400">
                 <div class="flex items-center justify-between mb-6">
                     <h3 class="text-xl font-bold text-slate-800">更多落地案例</h3>
@@ -259,7 +269,6 @@
     </main>
 
     <script>
-        // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
