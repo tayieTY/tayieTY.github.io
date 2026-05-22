@@ -1,1 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="h-full overflow-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>济南东湖调水工程 - 光脉智联</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .scroll-container::-webkit-scrollbar { display: none; }
+        .scroll-container { -ms-overflow-style: none; scrollbar-width: none; scroll-behavior: smooth; }
+        .fade-up-element {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        .delay-1 { animation-delay: 150ms; }
+        .delay-2 { animation-delay: 300ms; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans h-full m-0 relative">
+    <nav class="fixed w-full z-50 top-0 left-0 px-4 py-4 pointer-events-none">
+        <div class="max-w-5xl mx-auto bg-white/80 backdrop-blur-lg rounded-2xl shadow-sm border border-white/60 px-6 py-3 flex justify-between items-center pointer-events-auto transition-all hover:shadow-md">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-blue-500 flex items-center justify-center shadow-md">
+                    <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <span class="font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-600">光脉智联 | 落地案例</span>
+            </div>
+            <a href="index.html" class="px-5 py-2 text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-full transition-colors">
+                返回首页
+            </a>
+        </div>
+    </nav>
 
+    <div class="scroll-container h-full overflow-y-auto pt-28 pb-16 px-4 relative z-10">
+        <div class="max-w-5xl mx-auto">
+            <div class="w-full h-72 md:h-96 rounded-[2.5rem] overflow-hidden relative shadow-2xl shadow-slate-300/50 mb-12 fade-up-element group">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent z-10"></div>
+                <img src="./images/case2_bg.jpg" alt="济南东湖调水工程实景" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute bottom-0 left-0 z-20 p-8 md:p-12 w-full">
+                    <span class="inline-block px-4 py-1.5 bg-indigo-500/80 backdrop-blur-md text-white text-sm font-bold rounded-full mb-4 shadow-sm">
+                        8.1 公里输水隧洞 | 重点水利工程
+                    </span>
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight drop-shadow-lg">
+                        济南东湖调水工程安全监测
+                    </h1>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-[2.5rem] p-8 md:p-14 shadow-xl shadow-slate-200/40 border border-slate-100 fade-up-element delay-1 mb-8">
+                <div class="flex flex-col md:flex-row items-start gap-6 md:gap-8 mb-12">
+                    <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 shadow-inner">📌</div>
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">项目背景</h2>
+                        <p class="text-slate-600 leading-relaxed text-lg text-justify">
+                            济南东湖调水工程为山东省重点水利民生工程，核心输水隧洞全长 8.1 公里，是济南东部城区供水的核心通道。隧洞埋深大、地质条件复杂，传统监测手段无法实现隧洞衬砌结构形变、围岩压力异常的连续监测，难以提前预判结构安全隐患。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent my-10"></div>
+
+                <div class="flex flex-col md:flex-row items-start gap-6 md:gap-8 mb-12">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 shadow-inner">⚙️</div>
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">落地配置</h2>
+                        <p class="text-slate-600 leading-relaxed text-lg text-justify">
+                            沿隧洞衬砌环向布设本项目分布式光纤传感阵列，配套部署分布式光纤传感解调仪，搭载光脉智联 SaaS 平台。实现隧洞全线结构应变、围岩振动的实时监测，构建了结构健康状态评估模型，实现结构隐患的提前预警。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent my-10"></div>
+
+                <div class="flex flex-col md:flex-row items-start gap-6 md:gap-8">
+                    <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 shadow-inner">📈</div>
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">实施效果</h2>
+                        <p class="text-slate-600 leading-relaxed text-lg text-justify">
+                            项目投运后，成功捕捉隧洞衬砌 <strong class="text-slate-800">3 处</strong> 微小形变隐患，精准定位隐患位置并推送预警，管理单位及时采取加固措施，避免了结构损伤扩大。系统实现了隧洞结构健康状态的全天候连续监测，数据准确率达 <strong class="text-slate-800">96% 以上</strong>，为调水工程长期安全运营提供了精准的数据支撑与技术保障。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center text-slate-400 text-sm mt-12 fade-up-element delay-2">
+                © 2026 光脉智联 - 光纤织网智守城脉团队. All rights reserved.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
