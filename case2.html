@@ -1,95 +1,284 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="h-full overflow-hidden">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>济南东湖调水工程 - 光脉智联</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>珠海澳门拱北输水工程 - 光脉智联 | 城市生命线安全监测案例</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .scroll-container::-webkit-scrollbar { display: none; }
-        .scroll-container { -ms-overflow-style: none; scrollbar-width: none; scroll-behavior: smooth; }
-        .fade-up-element {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #0f2b3d 0%, #1b4f6e 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-        .delay-1 { animation-delay: 150ms; }
-        .delay-2 { animation-delay: 300ms; }
+        .hero-gradient {
+            background: linear-gradient(105deg, #0b1a2c 0%, #0f2a3b 100%);
+        }
+        .stat-card {
+            transition: all 0.25s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.15);
+        }
+        .tech-tag {
+            background: rgba(59,130,246,0.12);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(59,130,246,0.25);
+        }
+        .quote-border {
+            border-left: 4px solid #3b82f6;
+        }
+        .case-card {
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+        }
+        .case-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 30px -12px rgba(0, 0, 0, 0.2);
+        }
+        .cert-badge {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+        }
+        .section-fade {
+            animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans h-full m-0 relative">
-    <nav class="fixed w-full z-50 top-0 left-0 px-4 py-4 pointer-events-none">
-        <div class="max-w-5xl mx-auto bg-white/80 backdrop-blur-lg rounded-2xl shadow-sm border border-white/60 px-6 py-3 flex justify-between items-center pointer-events-auto transition-all hover:shadow-md">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-blue-500 flex items-center justify-center shadow-md">
-                    <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- 导航栏 (与主站风格统一) -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-4 pt-5 pointer-events-none">
+        <div class="max-w-7xl mx-auto bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-slate-200/50 border border-white/60 px-5 py-2.5 flex justify-between items-center pointer-events-auto transition-all hover:shadow-xl">
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center shadow-md">
+                    <svg class="w-4.5 h-4.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                 </div>
-                <span class="font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-600">光脉智联 | 落地案例</span>
+                <span class="font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-600">光脉智联</span>
             </div>
-            <a href="index.html" class="px-5 py-2 text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-full transition-colors">
-                返回首页
-            </a>
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="hidden sm:inline-flex items-center gap-1.5 text-slate-600 hover:text-blue-600 text-sm font-medium transition-colors bg-slate-100/80 hover:bg-slate-100 px-4 py-2 rounded-full">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                    返回首页
+                </a>
+                <a href="index.html" class="sm:hidden p-2 text-slate-600 hover:text-blue-600">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                </a>
+            </div>
         </div>
     </nav>
 
-    <div class="scroll-container h-full overflow-y-auto pt-28 pb-16 px-4 relative z-10">
-        <div class="max-w-5xl mx-auto">
-            <div class="w-full h-72 md:h-96 rounded-[2.5rem] overflow-hidden relative shadow-2xl shadow-slate-300/50 mb-12 fade-up-element group">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent z-10"></div>
-                <img src="./images/case2_bg.jpg" alt="济南东湖调水工程实景" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                <div class="absolute bottom-0 left-0 z-20 p-8 md:p-12 w-full">
-                    <span class="inline-block px-4 py-1.5 bg-indigo-500/80 backdrop-blur-md text-white text-sm font-bold rounded-full mb-4 shadow-sm">
-                        8.1 公里输水隧洞 | 重点水利工程
-                    </span>
-                    <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight drop-shadow-lg">
-                        济南东湖调水工程安全监测
-                    </h1>
+    <main class="pt-28 pb-20 px-4 max-w-6xl mx-auto">
+        <!-- 头部 Hero (渐隐+背景) -->
+        <div class="relative overflow-hidden rounded-3xl md:rounded-[2.5rem] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 shadow-2xl mb-12 section-fade">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1541356665065-22676f35dd40?q=80&w=2072&auto=format')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
+            <div class="absolute top-0 right-0 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-80 h-80 bg-cyan-500/15 rounded-full blur-3xl"></div>
+            
+            <div class="relative z-10 p-6 md:p-12 lg:p-16 text-white">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 text-blue-200 text-sm font-medium mb-5">
+                    <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+                    重点民生工程 · 珠海-澳门供水生命线
                 </div>
-            </div>
-
-            <div class="bg-white rounded-[2.5rem] p-8 md:p-14 shadow-xl shadow-slate-200/40 border border-slate-100 fade-up-element delay-1 mb-8">
-                <div class="flex flex-col md:flex-row items-start gap-6 md:gap-8 mb-12">
-                    <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 shadow-inner">📌</div>
-                    <div>
-                        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">项目背景</h2>
-                        <p class="text-slate-600 leading-relaxed text-lg text-justify">
-                            济南东湖调水工程为山东省重点水利民生工程，核心输水隧洞全长 8.1 公里，是济南东部城区供水的核心通道。隧洞埋深大、地质条件复杂，传统监测手段无法实现隧洞衬砌结构形变、围岩压力异常的连续监测，难以提前预判结构安全隐患。
-                        </p>
-                    </div>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-5">珠海澳门拱北<br>输水工程安全监测</h1>
+                <div class="flex flex-wrap gap-4 text-blue-100 text-base md:text-lg max-w-2xl">
+                    <span class="flex items-center gap-1.5">📍 全长 15+ 公里</span>
+                    <span class="flex items-center gap-1.5">💧 供应澳门 80% 淡水资源</span>
+                    <span class="flex items-center gap-1.5">⚙️ 分布式光纤传感 + SaaS 平台</span>
                 </div>
-
-                <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent my-10"></div>
-
-                <div class="flex flex-col md:flex-row items-start gap-6 md:gap-8 mb-12">
-                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 shadow-inner">⚙️</div>
-                    <div>
-                        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">落地配置</h2>
-                        <p class="text-slate-600 leading-relaxed text-lg text-justify">
-                            沿隧洞衬砌环向布设本项目分布式光纤传感阵列，配套部署分布式光纤传感解调仪，搭载光脉智联 SaaS 平台。实现隧洞全线结构应变、围岩振动的实时监测，构建了结构健康状态评估模型，实现结构隐患的提前预警。
-                        </p>
-                    </div>
-                </div>
-
-                <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent my-10"></div>
-
-                <div class="flex flex-col md:flex-row items-start gap-6 md:gap-8">
-                    <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 shadow-inner">📈</div>
-                    <div>
-                        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">实施效果</h2>
-                        <p class="text-slate-600 leading-relaxed text-lg text-justify">
-                            项目投运后，成功捕捉隧洞衬砌 <strong class="text-slate-800">3 处</strong> 微小形变隐患，精准定位隐患位置并推送预警，管理单位及时采取加固措施，避免了结构损伤扩大。系统实现了隧洞结构健康状态的全天候连续监测，数据准确率达 <strong class="text-slate-800">96% 以上</strong>，为调水工程长期安全运营提供了精准的数据支撑与技术保障。
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center text-slate-400 text-sm mt-12 fade-up-element delay-2">
-                © 2026 光脉智联 - 光纤织网智守城脉团队. All rights reserved.
             </div>
         </div>
-    </div>
+
+        <!-- 关键数据卡片 (三大KPI) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16 section-fade delay-100">
+            <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-100 stat-card">
+                <div class="text-4xl font-black text-blue-600">23<span class="text-2xl">起</span></div>
+                <div class="text-slate-500 text-sm mt-1">第三方施工隐患提前识别</div>
+                <div class="mt-3 w-full bg-slate-100 rounded-full h-1.5"><div class="bg-blue-500 h-1.5 rounded-full w-[95%]"></div></div>
+                <p class="text-xs text-slate-400 mt-2">阻止违规挖掘事故</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-100 stat-card">
+                <div class="text-4xl font-black text-cyan-600">2<span class="text-2xl">起</span></div>
+                <div class="text-slate-500 text-sm mt-1">微小泄漏隐患精准预警</div>
+                <div class="mt-3 w-full bg-slate-100 rounded-full h-1.5"><div class="bg-cyan-500 h-1.5 rounded-full w-[100%]"></div></div>
+                <p class="text-xs text-slate-400 mt-2">避免重大渗漏事故</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-100 stat-card">
+                <div class="text-4xl font-black text-emerald-600">80<span class="text-2xl">%</span></div>
+                <div class="text-slate-500 text-sm mt-1">无效巡检频次降幅</div>
+                <div class="mt-3 w-full bg-slate-100 rounded-full h-1.5"><div class="bg-emerald-500 h-1.5 rounded-full w-[80%]"></div></div>
+                <p class="text-xs text-slate-400 mt-2">运维成本大幅降低</p>
+            </div>
+        </div>
+
+        <!-- 详细内容区块 -->
+        <div class="space-y-12">
+            <!-- 项目背景 -->
+            <div class="bg-white rounded-3xl p-6 md:p-10 shadow-md border border-slate-100 section-fade delay-200">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-2xl flex-shrink-0">📌</div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800 mb-3">项目背景</h2>
+                        <p class="text-slate-600 leading-relaxed text-justify">该输水工程是珠海向澳门供水的核心民生工程，输水管道全长超15公里，承担澳门近80%的淡水供应任务。管道沿线地质环境复杂，穿越城市主干道、河流及高填方区域，周边存在频繁的道路施工、地铁建设活动。传统的人工巡检及点式电子传感器存在大量盲区，无法覆盖长距离管线，且易受潮湿及电磁干扰，误报率一度超过40%，供水安全面临严峻挑战。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 解决方案 + 技术架构 -->
+            <div class="bg-gradient-to-r from-slate-50 to-white rounded-3xl p-6 md:p-10 shadow-md border border-slate-100 section-fade delay-200">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="flex-1">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center text-2xl">⚙️</div>
+                            <div>
+                                <h2 class="text-2xl font-bold text-slate-800 mb-3">落地配置</h2>
+                                <ul class="space-y-3 text-slate-600">
+                                    <li class="flex gap-2"><span class="text-indigo-500">▸</span> 沿管线全线布设 <strong>结构增敏型光纤传感阵列</strong>（三分量声学检波器）</li>
+                                    <li class="flex gap-2"><span class="text-indigo-500">▸</span> 部署 <strong>分布式光纤传感解调仪</strong>，单端监测距离25km</li>
+                                    <li class="flex gap-2"><span class="text-indigo-500">▸</span> 搭载 <strong>光脉智联 SaaS 专业版</strong>，实现振动/应变/声学信号同步监测</li>
+                                    <li class="flex gap-2"><span class="text-indigo-500">▸</span> 设置分级预警阈值，对接工程管理单位应急系统</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-px bg-slate-200 hidden md:block"></div>
+                    <div class="flex-1">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-50 flex items-center justify-center text-2xl">🧠</div>
+                            <div>
+                                <h2 class="text-2xl font-bold text-slate-800 mb-3">技术亮点</h2>
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="tech-tag text-xs px-3 py-1 rounded-full text-blue-700">多参数复合传感</span>
+                                    <span class="tech-tag text-xs px-3 py-1 rounded-full text-blue-700">AI声纹识别</span>
+                                    <span class="tech-tag text-xs px-3 py-1 rounded-full text-blue-700">国密SM4加密</span>
+                                </div>
+                                <p class="text-slate-600 leading-relaxed text-sm">依托瑞利+布里渊散射技术，实现泄漏声纹、第三方振动、管壁应变的同步解析；AI模型经本地真实噪声训练，误报率压制至3%以下。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 实施效果 + 量化成果图表风格 -->
+            <div class="bg-white rounded-3xl p-6 md:p-10 shadow-md border border-slate-100 section-fade delay-300">
+                <div class="flex items-start gap-4 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-2xl">📈</div>
+                    <h2 class="text-2xl font-bold text-slate-800">实施效果 · 运行数据</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-slate-50 rounded-xl p-5">
+                        <div class="text-sm text-slate-500 mb-1">事件识别准确率</div>
+                        <div class="text-3xl font-bold text-slate-800">95.6%</div>
+                        <div class="w-full bg-slate-200 rounded-full h-2 mt-2"><div class="bg-blue-500 h-2 rounded-full w-[95.6%]"></div></div>
+                        <p class="text-xs text-slate-400 mt-2">远高于行业平均(≤85%)</p>
+                    </div>
+                    <div class="bg-slate-50 rounded-xl p-5">
+                        <div class="text-sm text-slate-500 mb-1">系统误报率</div>
+                        <div class="text-3xl font-bold text-slate-800">＜3%</div>
+                        <div class="w-full bg-slate-200 rounded-full h-2 mt-2"><div class="bg-cyan-500 h-2 rounded-full w-[7.5%]"></div></div>
+                        <p class="text-xs text-slate-400 mt-2">较传统电子传感器(40%+)下降92%</p>
+                    </div>
+                    <div class="bg-slate-50 rounded-xl p-5">
+                        <div class="text-sm text-slate-500 mb-1">平均定位误差</div>
+                        <div class="text-3xl font-bold text-slate-800">4.2米</div>
+                        <p class="text-xs text-slate-400 mt-2">满足米级精准维修派单需求</p>
+                    </div>
+                    <div class="bg-slate-50 rounded-xl p-5">
+                        <div class="text-sm text-slate-500 mb-1">系统在线率</div>
+                        <div class="text-3xl font-bold text-slate-800">99.97%</div>
+                        <p class="text-xs text-slate-400 mt-2">全年无重大故障停机</p>
+                    </div>
+                </div>
+                <div class="mt-8 p-5 bg-blue-50/40 rounded-xl quote-border">
+                    <p class="text-slate-700 italic text-base leading-relaxed">“自系统投运以来，累计避免因第三方施工及微小泄漏导致的停水事故3起，运维人员现场复核次数减少82%，真正实现了从‘被动抢险’到‘主动预警’的转变。”</p>
+                    <p class="text-sm text-slate-500 mt-3">—— 工程管理处 技术负责人</p>
+                </div>
+            </div>
+
+            <!-- 权威认证 & 项目价值 -->
+            <div class="grid md:grid-cols-2 gap-6 section-fade delay-400">
+                <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center text-xl">🏅</div>
+                        <h3 class="font-bold text-xl text-slate-800">项目验收评价</h3>
+                    </div>
+                    <ul class="space-y-3 text-slate-600 text-sm">
+                        <li class="flex gap-2"><span class="text-green-500">✓</span> 通过珠海市水务局 & 澳门海事及水务局联合验收</li>
+                        <li class="flex gap-2"><span class="text-green-500">✓</span> 被列为广东省城市生命线示范工程典型案例</li>
+                        <li class="flex gap-2"><span class="text-green-500">✓</span> 系统安全能力通过国家保密局合规检测</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center text-xl">🗺️</div>
+                        <h3 class="font-bold text-xl text-slate-800">项目辐射价值</h3>
+                    </div>
+                    <ul class="space-y-3 text-slate-600 text-sm">
+                        <li class="flex gap-2"><span class="text-indigo-500">▶</span> 保障澳门居民用水安全，社会效益显著</li>
+                        <li class="flex gap-2"><span class="text-indigo-500">▶</span> 形成跨区域长距离输水工程光纤监测标准模版</li>
+                        <li class="flex gap-2"><span class="text-indigo-500">▶</span> 成果写入《粤港澳大湾区城市韧性供水白皮书》</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 相关案例推荐 (内部链接) -->
+            <div class="mt-12 section-fade delay-400">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold text-slate-800">更多落地案例</h3>
+                    <a href="index.html#cases" class="text-sm text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1">查看全部 →</a>
+                </div>
+                <div class="grid md:grid-cols-2 gap-5">
+                    <a href="#" class="case-card bg-white rounded-2xl p-5 border border-slate-100 shadow-sm group flex items-center justify-between transition-all">
+                        <div><span class="font-bold text-slate-800 group-hover:text-blue-600">济南东湖调水工程</span><p class="text-slate-500 text-sm mt-0.5">8.1km 输水隧洞结构安全监测</p></div>
+                        <svg class="w-5 h-5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                    </a>
+                    <a href="#" class="case-card bg-white rounded-2xl p-5 border border-slate-100 shadow-sm group flex items-center justify-between transition-all">
+                        <div><span class="font-bold text-slate-800 group-hover:text-blue-600">某县域燃气管网防破坏</span><p class="text-slate-500 text-sm mt-0.5">320km 燃气管网 | 第三方施工预警</p></div>
+                        <svg class="w-5 h-5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 技术证书 / 知识产权展示 -->
+            <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-6 flex flex-wrap gap-4 justify-between items-center border border-slate-100 section-fade">
+                <div class="flex items-center gap-3"><span class="text-3xl">📄</span><span class="text-slate-700 text-sm font-medium">软件著作权：2025SR1405965</span></div>
+                <div class="flex items-center gap-3"><span class="text-3xl">🔖</span><span class="text-slate-700 text-sm font-medium">多项实用新型专利 · 国家光检中心认证</span></div>
+                <div class="flex items-center gap-3"><span class="text-3xl">🇨🇳</span><span class="text-slate-700 text-sm font-medium">100% 国产化 | 国密SM4加密</span></div>
+            </div>
+        </div>
+
+        <footer class="mt-16 pt-8 border-t border-slate-200 text-center text-slate-400 text-sm">
+            © 2026 光脉智联 · 光纤织网智守城脉团队 | 让城市生命线更安全、更智能
+        </footer>
+    </main>
+
+    <!-- 平滑滚动 (用于内部锚点) -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if(href === "#" || href === "") return;
+                const target = document.querySelector(href);
+                if(target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
