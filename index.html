@@ -2,38 +2,26 @@
 <html lang="zh-CN" class="h-full overflow-hidden">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>光脉智联 | 深蓝·城市生命线智能监测</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>光纤织网智守城脉 - 城市生命线智能监测</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* 定制深蓝科技主题 - 覆盖原生浅色 */
-        :root {
-            --deep-bg: #0A0F1F;
-            --card-bg-dark: rgba(15, 25, 45, 0.75);
-            --card-bg-solid: rgba(12, 20, 35, 0.85);
-            --glow-cyan: #00e0ff;
-            --glow-blue: #2a6df4;
+        /* 滚动条隐藏与优化 */
+        .scroll-container::-webkit-scrollbar {
+            display: none;
         }
-        body {
-            background: radial-gradient(circle at 10% 20%, #0B1120, #030617);
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+        .scroll-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            transform: translateZ(0);
+            will-change: scroll-position;
         }
-        /* 科技网格背景 */
-        .tech-grid-bg {
-            background-image: 
-                linear-gradient(rgba(0, 191, 255, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 191, 255, 0.08) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
-        /* 滚动条隐藏 */
-        .scroll-container::-webkit-scrollbar { display: none; }
-        .scroll-container { -ms-overflow-style: none; scrollbar-width: none; transform: translateZ(0); will-change: scroll-position; }
 
-        /* 电影级动效 */
+        /* 电影级动效 - 优化性能 */
         .fade-up-element {
             opacity: 0;
-            transform: translateY(25px);
-            transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity;
         }
         .section-active .fade-up-element {
@@ -46,7 +34,7 @@
         .delay-4 { transition-delay: 320ms; }
         .delay-5 { transition-delay: 400ms; }
 
-        /* 弹窗深色样式 */
+        /* 弹窗样式优化 - 完美居中 */
         dialog {
             position: fixed;
             top: 50%;
@@ -55,38 +43,42 @@
             margin: 0;
             padding: 0;
             border: none;
+            outline: none;
             background: transparent;
             max-width: 90vw;
             max-height: 90vh;
             overflow: visible;
         }
         dialog::backdrop {
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
         dialog[open] {
-            animation: modalFadeIn 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+            animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        dialog[open] .modal-inner {
+            animation: modalContentIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         @keyframes modalFadeIn {
-            from { opacity: 0; transform: translate(-50%, -50%) scale(0.96); }
+            from { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
             to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
         }
+        @keyframes modalContentIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-        /* 光晕浮动动画 */
-        @keyframes floatGlow {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
-            50% { transform: translate(2%, 3%) scale(1.08); opacity: 0.7; }
+        /* 光晕动画 - 减弱性能消耗 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         .glow-blob {
-            animation: floatGlow 18s ease-in-out infinite;
-            filter: blur(90px);
+            animation: float 20s ease-in-out infinite;
         }
-        .glow-blob-fast {
-            animation: floatGlow 22s ease-in-out infinite reverse;
-        }
-        
-        /* 导航栏下划线科技感 */
+
+        /* 导航栏链接下划线动画 */
         .nav-link {
             position: relative;
         }
@@ -97,83 +89,60 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, #3b82f6, #2dd4bf);
-            border-radius: 2px;
-            transition: width 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            background: linear-gradient(90deg, #3b82f6, #06b6d4);
+            border-radius: 1px;
+            transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .nav-link:hover::after {
             width: 100%;
         }
-        /* 卡片玻璃效果增强 */
-        .glass-card-dark {
-            background: rgba(10, 20, 40, 0.65);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(59, 130, 246, 0.25);
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.4);
-        }
-        .glass-card-dark:hover {
-            border-color: rgba(59, 130, 246, 0.6);
-            box-shadow: 0 20px 35px -10px rgba(0, 180, 255, 0.2);
-        }
-        /* 按钮光效 */
-        .btn-glow {
-            transition: all 0.3s ease;
-        }
-        .btn-glow:hover {
-            box-shadow: 0 0 12px rgba(59,130,246,0.5);
-        }
-        /* 定制文本 */
-        .text-glow-blue {
-            text-shadow: 0 0 8px rgba(0, 160, 255, 0.3);
-        }
     </style>
 </head>
-<body class="h-full m-0 relative text-gray-200 tech-grid-bg">
+<body class="bg-slate-50 text-slate-800 font-sans h-full m-0 relative">
 
-    <!-- 深蓝科技背景光晕 -->
+    <!-- 背景光晕 -->
     <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div class="absolute top-[-15%] left-[-10%] w-[60vw] h-[60vw] bg-blue-600/20 rounded-full blur-[130px] glow-blob"></div>
-        <div class="absolute bottom-[-10%] right-[-5%] w-[55vw] h-[55vw] bg-indigo-600/15 rounded-full blur-[150px] glow-blob-fast" style="animation-delay: -5s;"></div>
-        <div class="absolute top-[40%] left-[30%] w-[40vw] h-[40vw] bg-cyan-500/10 rounded-full blur-[110px] glow-blob"></div>
-        <!-- 微细星点 -->
-        <div class="absolute inset-0 bg-[radial-gradient(white_0.5px,transparent_0.5px)] bg-[length:24px_24px] opacity-20"></div>
+        <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-blue-400/20 rounded-full blur-[120px] glow-blob"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-indigo-400/10 rounded-full blur-[150px] glow-blob" style="animation-delay: -10s;"></div>
     </div>
 
-    <!-- 导航栏 (深色玻璃) -->
+    <!-- 导航栏 -->
     <nav class="fixed w-full z-50 top-0 left-0 px-4 py-3">
-        <div class="max-w-7xl mx-auto bg-slate-900/70 backdrop-blur-xl rounded-2xl shadow-2xl shadow-black/30 border border-slate-700/60 px-6 py-3 flex justify-between items-center transition-all duration-500 hover:bg-slate-900/80">
+        <div class="max-w-7xl mx-auto bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg shadow-slate-900/10 border border-white/60 px-6 py-3 flex justify-between items-center transition-all duration-500 hover:shadow-xl hover:bg-white/90 relative">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-blue-500/30 flex-shrink-0">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center shadow-md shadow-blue-500/25 flex-shrink-0">
                     <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                 </div>
-                <span class="font-bold text-xl md:text-2xl bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent tracking-tight">光脉智联</span>
+                <span class="font-bold text-xl md:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-600 tracking-tight">光脉智联</span>
             </div>
             
-            <!-- 桌面菜单 -->
+            <!-- 桌面端菜单 -->
             <div class="hidden md:flex items-center space-x-1">
-                <a href="#intro" class="nav-link px-4 py-2 text-gray-300 hover:text-cyan-300 font-medium transition-colors rounded-lg hover:bg-white/5 text-sm lg:text-base">简介</a>
-                <a href="#tech" class="nav-link px-4 py-2 text-gray-300 hover:text-cyan-300 font-medium transition-colors rounded-lg hover:bg-white/5 text-sm lg:text-base">核心技术</a>
-                <a href="#cases" class="nav-link px-4 py-2 text-gray-300 hover:text-cyan-300 font-medium transition-colors rounded-lg hover:bg-white/5 text-sm lg:text-base">落地案例</a>
-                <a href="#pricing" class="nav-link px-4 py-2 text-gray-300 hover:text-cyan-300 font-medium transition-colors rounded-lg hover:bg-white/5 text-sm lg:text-base">收费模式</a>
-                <a href="#team" class="nav-link px-4 py-2 text-gray-300 hover:text-cyan-300 font-medium transition-colors rounded-lg hover:bg-white/5 text-sm lg:text-base">研发团队</a>
+                <a href="#intro" class="nav-link px-4 py-2 text-slate-600 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-slate-50/80 text-sm lg:text-base">简介</a>
+                <a href="#tech" class="nav-link px-4 py-2 text-slate-600 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-slate-50/80 text-sm lg:text-base">核心技术</a>
+                <a href="#cases" class="nav-link px-4 py-2 text-slate-600 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-slate-50/80 text-sm lg:text-base">落地案例</a>
+                <a href="#pricing" class="nav-link px-4 py-2 text-slate-600 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-slate-50/80 text-sm lg:text-base">收费模式</a>
+                <a href="#team" class="nav-link px-4 py-2 text-slate-600 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-slate-50/80 text-sm lg:text-base">研发团队</a>
             </div>
 
-            <!-- 移动端按钮 -->
+            <!-- 移动端菜单按钮 -->
             <div class="md:hidden">
-                <button id="mobile-menu-btn" class="p-2 text-gray-300 hover:text-cyan-300 transition-colors focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <button id="mobile-menu-btn" class="p-2 text-slate-500 hover:text-blue-600 transition-colors focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
                 </button>
             </div>
 
-            <!-- 移动端菜单 -->
-            <div id="mobile-menu" class="absolute top-full left-0 w-full mt-2 bg-slate-900/90 backdrop-blur-xl border border-slate-700 rounded-2xl shadow-xl p-4 flex flex-col space-y-2 hidden md:hidden">
-                <a href="#intro" class="mobile-link px-4 py-3 text-gray-200 font-medium rounded-lg hover:bg-blue-900/40 hover:text-cyan-300">简介</a>
-                <a href="#tech" class="mobile-link px-4 py-3 text-gray-200 font-medium rounded-lg hover:bg-blue-900/40 hover:text-cyan-300">核心技术</a>
-                <a href="#cases" class="mobile-link px-4 py-3 text-gray-200 font-medium rounded-lg hover:bg-blue-900/40 hover:text-cyan-300">落地案例</a>
-                <a href="#pricing" class="mobile-link px-4 py-3 text-gray-200 font-medium rounded-lg hover:bg-blue-900/40 hover:text-cyan-300">收费模式</a>
-                <a href="#team" class="mobile-link px-4 py-3 text-gray-200 font-medium rounded-lg hover:bg-blue-900/40 hover:text-cyan-300">研发团队</a>
+            <!-- 移动端下拉菜单面板 -->
+            <div id="mobile-menu" class="absolute top-full left-0 w-full mt-2 bg-white/95 backdrop-blur-xl border border-slate-100 rounded-2xl shadow-xl p-4 flex flex-col space-y-2 hidden md:hidden">
+                <a href="#intro" class="mobile-link px-4 py-3 text-slate-700 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600">简介</a>
+                <a href="#tech" class="mobile-link px-4 py-3 text-slate-700 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600">核心技术</a>
+                <a href="#cases" class="mobile-link px-4 py-3 text-slate-700 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600">落地案例</a>
+                <a href="#pricing" class="mobile-link px-4 py-3 text-slate-700 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600">收费模式</a>
+                <a href="#team" class="mobile-link px-4 py-3 text-slate-700 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600">研发团队</a>
             </div>
         </div>
     </nav>
@@ -181,188 +150,329 @@
     <!-- 主滚动容器 -->
     <div class="scroll-container h-full overflow-y-auto snap-y snap-mandatory scroll-smooth relative z-10">
 
-        <!-- 首屏：深蓝科技感视觉 -->
-        <section id="intro" class="w-full h-screen snap-start flex items-center justify-center relative overflow-hidden" style="background-image: linear-gradient(115deg, #030d1f 0%, #0a142c 100%), url('./images/home_page.jpg'); background-size: cover; background-blend-mode: overlay; background-position: center;">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#030614] via-[#0a1430]/70 to-transparent"></div>
-            <div class="absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-blue-600/20 blur-[100px] rounded-full"></div>
+        <!-- ============ 首屏 ============ -->
+        <section id="intro" class="w-full h-screen snap-start flex items-center justify-center bg-slate-900 text-white relative overflow-hidden" style="background-image: url('./images/home_page.jpg'); background-size: cover; background-position: bottom center; background-repeat: no-repeat;">
+            <div class="absolute inset-0 bg-slate-900/60 backdrop-brightness-50"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-blue-600/15 blur-[130px] rounded-full pointer-events-none"></div>
 
             <div class="max-w-5xl mx-auto px-6 text-center fade-up-element relative z-10">
-                <div class="inline-block mb-4 px-4 py-1.5 rounded-full bg-blue-500/10 backdrop-blur-sm border border-blue-400/30 text-cyan-300 text-sm font-medium tracking-wider">分布式光纤传感 · 全域智能预警</div>
-                <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-8 lg:mb-10 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-200 to-blue-300 leading-tight drop-shadow-2xl">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-8 lg:mb-10 tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-300 leading-tight drop-shadow-lg">
                     光纤织网 智守城脉
                 </h1>
-                <p class="text-lg md:text-2xl lg:text-3xl mb-12 lg:mb-16 max-w-4xl mx-auto text-blue-100/80 leading-relaxed font-light px-2 drop-shadow-md backdrop-blur-sm">
-                    针对全国超 <strong class="text-white font-bold">290 万公里</strong> 地下管线和百万座城市桥梁的老化风险，以分布式光纤传感技术为底座，打造全域感知与智能预警的整体解决方案。
+                <p class="text-lg md:text-2xl lg:text-3xl mb-12 lg:mb-16 max-w-4xl mx-auto text-blue-100/90 leading-relaxed font-light px-2 drop-shadow-md">
+                    针对全国超 <strong class="text-white font-semibold">290 万公里</strong> 地下管线和百万座城市桥梁的老化风险，以分布式光纤传感技术为底座，打造全域感知与智能预警的整体解决方案。
                 </p>
             </div>
         </section>
 
-        <!-- 核心技术 (深蓝玻璃卡片) -->
+        <!-- ============ 核心技术 ============ -->
         <section id="tech" class="w-full h-screen snap-start flex items-center justify-center pt-24 pb-16 md:pt-32 md:pb-16">
             <div class="max-w-7xl mx-auto px-6 w-full">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-12 md:mb-20 text-white tracking-tight fade-up-element drop-shadow-md">核心技术指标</h2>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-12 md:mb-20 text-slate-900 fade-up-element tracking-tight">核心技术指标</h2>
                 <div class="grid md:grid-cols-2 gap-8 md:gap-12">
                     <!-- 硬件全域感知 -->
-                    <div onclick="window.open('hardware.html','_blank')" class="glass-card-dark p-10 md:p-14 rounded-[2.5rem] hover:-translate-y-2 transition-all duration-500 fade-up-element delay-1 flex flex-col items-center text-center cursor-pointer">
-                        <div class="w-16 h-16 md:w-20 md:h-20 bg-blue-500/20 text-cyan-300 rounded-3xl flex items-center justify-center text-2xl md:text-3xl font-black mb-6 md:mb-8 backdrop-blur-sm border border-blue-500/30">📡</div>
-                        <h3 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-white">硬件全域感知</h3>
-                        <ul class="space-y-4 md:space-y-6 text-gray-300 text-base md:text-xl max-w-lg mx-auto">
-                            <li class="flex items-start text-left"><span class="text-cyan-400 font-bold mr-3 md:mr-4 text-xl md:text-2xl flex-shrink-0">✓</span> 单套设备最大探测距离达 <strong class="text-white">25 公里</strong>。</li>
-                            <li class="flex items-start text-left"><span class="text-cyan-400 font-bold mr-3 md:mr-4 text-xl md:text-2xl flex-shrink-0">✓</span> 事件定位精度 <strong class="text-white">≤5 米</strong>，报警响应时间 <strong class="text-white">≤5 秒</strong>。</li>
-                            <li class="flex items-start text-left"><span class="text-cyan-400 font-bold mr-3 md:mr-4 text-xl md:text-2xl flex-shrink-0">✓</span> 灵敏度提升 <strong class="text-white">30%</strong> 以上，识别准确率 <strong class="text-white">≥93%</strong>。</li>
+                    <div onclick="window.open('hardware.html','_blank')" class="bg-white/60 backdrop-blur-xl p-10 md:p-14 rounded-[2.5rem] border border-white/80 shadow-2xl shadow-slate-200/50 hover:-translate-y-2 transition-all duration-500 fade-up-element delay-1 flex flex-col items-center text-center cursor-pointer">
+                        <div class="w-16 h-16 md:w-20 md:h-20 bg-blue-100 text-blue-600 rounded-3xl flex items-center justify-center text-2xl md:text-3xl font-black mb-6 md:mb-8">📡</div>
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-slate-800">硬件全域感知</h3>
+                        <ul class="space-y-4 md:space-y-6 text-slate-600 text-base md:text-xl max-w-lg mx-auto">
+                            <li class="flex items-start text-left"><span class="text-blue-500 font-bold mr-3 md:mr-4 text-xl md:text-2xl flex-shrink-0">✓</span> 单套设备最大探测距离达 <strong class="text-slate-800">25 公里</strong>。</li>
+                            <li class="flex items-start text-left"><span class="text-blue-500 font-bold mr-3 md:mr-4 text-xl md:text-2xl flex-shrink-0">✓</span> 事件定位精度 <strong class="text-slate-800">≤5 米</strong>，报警响应时间 <strong class="text-slate-800">≤5 秒</strong>。</li>
+                            <li class="flex items-start text-left"><span class="text-blue-500 font-bold mr-3 md:mr-4 text-xl md:text-2xl flex-shrink-0">✓</span> 灵敏度提升 <strong class="text-slate-800">30%</strong> 以上，识别准确率 <strong class="text-slate-800">≥93%</strong>。</li>
                         </ul>
                     </div>
-                    <!-- SaaS平台 -->
-                    <div onclick="window.open('saas.html','_blank')" class="glass-card-dark p-10 md:p-14 rounded-[2.5rem] hover:-translate-y-2 transition-all duration-500 fade-up-element delay-2 flex flex-col items-center text-center cursor-pointer">
-                        <div class="w-16 h-16 md:w-20 md:h-20 bg-cyan-500/20 text-cyan-300 rounded-3xl flex items-center justify-center text-2xl md:text-3xl font-black mb-6 md:mb-8">☁️</div>
-                        <h3 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-white">光脉智联 SaaS 平台</h3>
-                        <ul class="space-y-4 md:space-y-6 text-gray-300 text-base md:text-xl max-w-lg mx-auto">
-                            <li class="flex items-start text-left"><span class="text-cyan-400 font-bold mr-3 md:mr-4 text-xl md:text-2xl flex-shrink-0">✓</span> 内置 AI 声纹识别算法，自动识别泄漏与微形变。</li>
-                            <li class="flex items-start text-left"><span class="text-cyan-400 font-bold mr-3 md:mr-4 text-xl md:text-2xl flex-shrink-0">✓</span> 集成 GIS 系统，支持三维可视化数字孪生。</li>
-                            <li class="flex items-start text-left"><span class="text-cyan-400 font-bold mr-3 md:mr-4 text-xl md:text-2xl flex-shrink-0">✓</span> 底层采用国密 SM4 加密，零信任架构防护。</li>
+                    <!-- 光脉智联 SaaS 平台 -->
+                    <div onclick="window.open('saas.html','_blank')" class="bg-white/60 backdrop-blur-xl p-10 md:p-14 rounded-[2.5rem] border border-white/80 shadow-2xl shadow-slate-200/50 hover:-translate-y-2 transition-all duration-500 fade-up-element delay-2 flex flex-col items-center text-center cursor-pointer">
+                        <div class="w-16 h-16 md:w-20 md:h-20 bg-cyan-100 text-cyan-600 rounded-3xl flex items-center justify-center text-2xl md:text-3xl font-black mb-6 md:mb-8">☁️</div>
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-slate-800">光脉智联 SaaS 平台</h3>
+                        <ul class="space-y-4 md:space-y-6 text-slate-600 text-base md:text-xl max-w-lg mx-auto">
+                            <li class="flex items-start text-left"><span class="text-cyan-500 font-bold mr-3 md:mr-4 text-xl md:text-2xl flex-shrink-0">✓</span> 内置 AI 声纹识别算法，自动识别泄漏与微形变。</li>
+                            <li class="flex items-start text-left"><span class="text-cyan-500 font-bold mr-3 md:mr-4 text-xl md:text-2xl flex-shrink-0">✓</span> 集成 GIS 系统，支持三维可视化数字孪生。</li>
+                            <li class="flex items-start text-left"><span class="text-cyan-500 font-bold mr-3 md:mr-4 text-xl md:text-2xl flex-shrink-0">✓</span> 底层采用国密 SM4 加密，零信任架构防护。</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 落地案例 深色卡片 -->
+        <!-- ============ 落地案例 ============ -->
         <section id="cases" class="w-full h-screen snap-start flex items-center justify-center pt-24 pb-16 md:pt-32 md:pb-16">
             <div class="max-w-7xl mx-auto px-6 w-full">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-12 md:mb-20 text-white fade-up-element tracking-tight">真实落地案例</h2>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-12 md:mb-20 text-slate-900 fade-up-element tracking-tight">真实落地案例</h2>
                 <div class="grid md:grid-cols-3 gap-6 md:gap-10">
-                    <div onclick="window.open('case1.html','_blank')" class="bg-slate-800/50 backdrop-blur-md p-8 md:p-12 rounded-[2rem] shadow-xl border border-slate-700/60 hover:shadow-2xl hover:border-cyan-500/40 hover:-translate-y-2 transition-all duration-500 fade-up-element delay-1 group flex flex-col text-center items-center cursor-pointer">
-                        <div class="h-2.5 w-16 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mb-6 md:mb-8 group-hover:w-full transition-all duration-500"></div>
-                        <h3 class="font-bold text-xl md:text-2xl mb-4 text-white">珠海澳门拱北输水工程</h3>
-                        <p class="text-cyan-300 font-medium mb-5 md:mb-6 text-sm md:text-base bg-cyan-950/40 inline-block px-4 py-1.5 rounded-md backdrop-blur-sm">全长超 15 公里</p>
-                        <p class="text-gray-300 leading-relaxed text-base md:text-lg max-w-sm mx-auto">成功识别沿线第三方施工隐患 <strong class="text-white">23 起</strong>，精准预警微小泄漏隐患 <strong class="text-white">2 起</strong>，保障对澳供水生命线。</p>
-                        <div class="mt-6 text-cyan-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">查看详情 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></div>
+                    <!-- 案例 1: 拱北输水工程 -->
+                    <div onclick="window.open('case1.html','_blank')" class="bg-white p-8 md:p-12 rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 fade-up-element delay-1 group flex flex-col text-center items-center cursor-pointer relative">
+                        <div class="h-2.5 w-16 bg-blue-500 rounded-full mb-6 md:mb-8 group-hover:w-full transition-all duration-500"></div>
+                        <h3 class="font-bold text-xl md:text-2xl mb-4 text-slate-800">珠海澳门拱北输水工程</h3>
+                        <p class="text-blue-600 font-medium mb-5 md:mb-6 text-sm md:text-base bg-blue-50 inline-block px-4 py-1.5 rounded-md">全长超 15 公里</p>
+                        <p class="text-slate-600 leading-relaxed text-base md:text-lg max-w-sm mx-auto">成功识别沿线第三方施工隐患 <strong class="text-slate-800">23 起</strong>，精准预警微小泄漏隐患 <strong class="text-slate-800">2 起</strong>，保障对澳供水生命线。</p>
+                        <div class="mt-6 text-blue-500 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">查看详情 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></div>
                     </div>
-                    <div onclick="window.open('case2.html','_blank')" class="bg-slate-800/50 backdrop-blur-md p-8 md:p-12 rounded-[2rem] shadow-xl border border-slate-700/60 hover:shadow-2xl hover:border-indigo-500/40 hover:-translate-y-2 transition-all duration-500 fade-up-element delay-2 group flex flex-col text-center items-center cursor-pointer">
-                        <div class="h-2.5 w-16 bg-gradient-to-r from-indigo-500 to-blue-400 rounded-full mb-6 md:mb-8 group-hover:w-full transition-all duration-500"></div>
-                        <h3 class="font-bold text-xl md:text-2xl mb-4 text-white">济南东湖调水工程</h3>
-                        <p class="text-indigo-300 font-medium mb-5 md:mb-6 text-sm md:text-base bg-indigo-950/40 inline-block px-4 py-1.5 rounded-md">8.1 公里输水隧洞</p>
-                        <p class="text-gray-300 leading-relaxed text-base md:text-lg max-w-sm mx-auto">成功捕捉隧洞衬砌 <strong class="text-white">3 处</strong> 微小形变隐患，系统数据与人工排查比对准确率达 <strong class="text-white">96%</strong> 以上。</p>
-                        <div class="mt-6 text-indigo-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">查看详情 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></div>
+                    
+                    <!-- 案例 2: 济南东湖调水工程 -->
+                    <div onclick="window.open('case2.html','_blank')" class="bg-white p-8 md:p-12 rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 fade-up-element delay-2 group flex flex-col text-center items-center cursor-pointer relative">
+                        <div class="h-2.5 w-16 bg-indigo-500 rounded-full mb-6 md:mb-8 group-hover:w-full transition-all duration-500"></div>
+                        <h3 class="font-bold text-xl md:text-2xl mb-4 text-slate-800">济南东湖调水工程</h3>
+                        <p class="text-indigo-600 font-medium mb-5 md:mb-6 text-sm md:text-base bg-indigo-50 inline-block px-4 py-1.5 rounded-md">8.1 公里输水隧洞</p>
+                        <p class="text-slate-600 leading-relaxed text-base md:text-lg max-w-sm mx-auto">成功捕捉隧洞衬砌 <strong class="text-slate-800">3 处</strong> 微小形变隐患，系统数据与人工排查比对准确率达 <strong class="text-slate-800">96%</strong> 以上。</p>
+                        <div class="mt-6 text-indigo-500 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">查看详情 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></div>
                     </div>
-                    <div onclick="window.open('case3.html','_blank')" class="bg-slate-800/50 backdrop-blur-md p-8 md:p-12 rounded-[2rem] shadow-xl border border-slate-700/60 hover:shadow-2xl hover:border-cyan-500/40 hover:-translate-y-2 transition-all duration-500 fade-up-element delay-3 group flex flex-col text-center items-center cursor-pointer">
-                        <div class="h-2.5 w-16 bg-gradient-to-r from-cyan-500 to-teal-400 rounded-full mb-6 md:mb-8 group-hover:w-full transition-all duration-500"></div>
-                        <h3 class="font-bold text-xl md:text-2xl mb-4 text-white">某县域燃气管网监测</h3>
-                        <p class="text-teal-300 font-medium mb-5 md:mb-6 text-sm md:text-base bg-teal-950/40 inline-block px-4 py-1.5 rounded-md">320 公里燃气管网</p>
-                        <p class="text-gray-300 leading-relaxed text-base md:text-lg max-w-sm mx-auto">成功识别违规开挖等振动隐患 <strong class="text-white">17 起</strong>，通过算法迭代，将城市嘈杂环境误报率降至 <strong class="text-white">3%</strong> 以下。</p>
-                        <div class="mt-6 text-teal-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">查看详情 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></div>
+                    
+                    <!-- 案例 3: 某县域燃气管网监测 -->
+                    <div onclick="window.open('case3.html','_blank')" class="bg-white p-8 md:p-12 rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 fade-up-element delay-3 group flex flex-col text-center items-center cursor-pointer relative">
+                        <div class="h-2.5 w-16 bg-cyan-500 rounded-full mb-6 md:mb-8 group-hover:w-full transition-all duration-500"></div>
+                        <h3 class="font-bold text-xl md:text-2xl mb-4 text-slate-800">某县域燃气管网监测</h3>
+                        <p class="text-cyan-600 font-medium mb-5 md:mb-6 text-sm md:text-base bg-cyan-50 inline-block px-4 py-1.5 rounded-md">320 公里燃气管网</p>
+                        <p class="text-slate-600 leading-relaxed text-base md:text-lg max-w-sm mx-auto">成功识别违规开挖等振动隐患 <strong class="text-slate-800">17 起</strong>，通过算法迭代，将城市嘈杂环境误报率降至 <strong class="text-slate-800">3%</strong> 以下。</p>
+                        <div class="mt-6 text-cyan-500 font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">查看详情 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 收费模式：深蓝高端卡片 -->
+        <!-- ============ 收费模式 ============ -->
         <section id="pricing" class="w-full h-screen snap-start flex items-center justify-center pt-28 pb-16 md:pt-40 md:pb-20">
             <div class="max-w-7xl mx-auto px-6 w-full">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-12 md:mb-20 text-white fade-up-element tracking-tight">三级盈利生态</h2>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-12 md:mb-20 text-slate-900 fade-up-element tracking-tight">三级盈利生态</h2>
                 <div class="grid md:grid-cols-3 gap-8 md:gap-12 items-stretch">
-                    <div onclick="window.location.href='lead1.html?product=感知基础设施'" class="bg-slate-800/60 backdrop-blur-lg p-10 md:p-14 rounded-[2.5rem] border border-slate-600/50 shadow-xl hover:shadow-2xl hover:border-blue-500/50 fade-up-element delay-1 flex flex-col text-center cursor-pointer transition-all duration-300 hover:-translate-y-2">
-                        <h3 class="text-2xl md:text-3xl font-bold mb-3 text-white">基础硬件建设</h3>
-                        <p class="text-gray-400 mb-8 md:mb-10 font-medium text-base md:text-lg">一次性投入，低门槛接入</p>
-                        <ul class="space-y-4 md:space-y-6 text-gray-300 font-medium text-base md:text-lg mt-auto max-w-md mx-auto w-full">
-                            <li class="flex justify-between border-b border-slate-700 pb-3"><span>设备标价</span> <span class="text-cyan-300 font-bold text-lg md:text-xl">35万/台</span></li>
-                            <li class="flex justify-between border-b border-slate-700 pb-3"><span>管网综合</span> <span class="text-cyan-300 font-bold text-lg md:text-xl">5-8万/公里</span></li>
+                    <!-- 基础硬件建设卡片 -->
+                    <div onclick="window.location.href='lead1.html?product=感知基础设施'" class="bg-white p-10 md:p-14 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/40 fade-up-element delay-1 flex flex-col text-center cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-3 text-slate-800">基础硬件建设</h3>
+                        <p class="text-slate-500 mb-8 md:mb-10 font-medium text-base md:text-lg">一次性投入，低门槛接入</p>
+                        <ul class="space-y-4 md:space-y-6 text-slate-600 font-medium text-base md:text-lg mt-auto max-w-md mx-auto w-full">
+                            <li class="flex justify-between border-b border-slate-50 pb-3"><span>设备标价</span> <span class="text-slate-900 font-bold text-lg md:text-xl">35万/台</span></li>
+                            <li class="flex justify-between border-b border-slate-50 pb-3"><span>管网综合</span> <span class="text-slate-900 font-bold text-lg md:text-xl">5-8万/公里</span></li>
                         </ul>
                     </div>
 
-                    <div onclick="window.location.href='lead1.html?product=SaaS基础版'" class="bg-gradient-to-br from-blue-700 via-indigo-800 to-slate-900 p-10 md:p-14 rounded-[2.5rem] shadow-2xl relative transform md:-translate-y-4 fade-up-element delay-2 text-white border border-blue-400/40 flex flex-col text-center cursor-pointer transition-all duration-300 hover:-translate-y-6 hover:shadow-blue-500/20">
-                        <div class="absolute -top-5 right-6 md:right-10 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-900 px-4 md:px-5 py-2 text-sm md:text-base font-bold rounded-full shadow-xl whitespace-nowrap">🔥 核心营收模型</div>
+                    <!-- SaaS订阅服务卡片 -->
+                    <div onclick="window.location.href='lead1.html?product=SaaS基础版'" class="bg-gradient-to-b from-blue-600 to-indigo-700 p-10 md:p-14 rounded-[2.5rem] shadow-2xl relative transform md:-translate-y-4 fade-up-element delay-2 text-white border border-blue-400/30 flex flex-col text-center cursor-pointer transition-all duration-300 hover:-translate-y-6 hover:shadow-3xl">
+                        <div class="absolute -top-5 right-6 md:right-10 bg-gradient-to-r from-amber-400 to-orange-500 text-white px-4 md:px-5 py-2 text-sm md:text-base font-bold rounded-full shadow-xl whitespace-nowrap">核心营收模型</div>
                         <h3 class="text-2xl md:text-3xl font-bold mb-3">SaaS 订阅服务</h3>
                         <p class="text-blue-200 mb-8 md:mb-10 font-medium text-base md:text-lg">按年付费，持续升级</p>
-                        <ul class="space-y-4 md:space-y-6 text-blue-100 font-medium text-base md:text-lg mt-auto max-w-md mx-auto w-full">
-                            <li class="flex justify-between border-b border-blue-500/30 pb-3"><span>基础版</span> <span class="font-bold text-lg md:text-xl text-white">3万元/年/百公里</span></li>
-                            <li class="flex justify-between border-b border-blue-500/30 pb-3"><span>专业版</span> <span class="font-bold text-lg md:text-xl text-white">8万元/年/百公里</span></li>
-                            <li class="flex justify-between border-b border-blue-500/30 pb-3"><span>旗舰版</span> <span class="font-bold text-lg md:text-xl text-white">20万元/年/项目</span></li>
+                        <ul class="space-y-4 md:space-y-6 text-blue-50 font-medium text-base md:text-lg mt-auto max-w-md mx-auto w-full">
+                            <li class="flex justify-between border-b border-blue-500/50 pb-3"><span>基础版</span> <span class="font-bold text-lg md:text-xl">3万元/年/百公里</span></li>
+                            <li class="flex justify-between border-b border-blue-500/50 pb-3"><span>专业版</span> <span class="font-bold text-lg md:text-xl">8万元/年/百公里</span></li>
+                            <li class="flex justify-between border-b border-blue-500/50 pb-3"><span>旗舰版</span> <span class="font-bold text-lg md:text-xl">20万元/年/项目</span></li>
                         </ul>
                     </div>
 
-                    <div onclick="window.location.href='lead1.html?product=私有化部署'" class="bg-slate-800/60 backdrop-blur-lg p-10 md:p-14 rounded-[2.5rem] border border-slate-600/50 shadow-xl hover:shadow-2xl hover:border-purple-500/50 fade-up-element delay-3 flex flex-col text-center cursor-pointer transition-all duration-300 hover:-translate-y-2">
-                        <h3 class="text-2xl md:text-3xl font-bold mb-3 text-white">数据安全与增值</h3>
-                        <p class="text-gray-400 mb-8 md:mb-10 font-medium text-base md:text-lg">针对政企客户定制化</p>
-                        <ul class="space-y-4 md:space-y-6 text-gray-300 font-medium text-base md:text-lg mt-auto max-w-md mx-auto w-full">
-                            <li class="flex justify-between border-b border-slate-700 pb-3"><span>私有化部署</span> <span class="text-purple-300 font-bold text-lg md:text-xl">30-100万元</span></li>
-                            <li class="flex justify-between border-b border-slate-700 pb-3"><span>年度安全运维</span> <span class="text-purple-300 font-bold text-lg md:text-xl">10%-15%</span></li>
+                    <!-- 数据安全与增值卡片 -->
+                    <div onclick="window.location.href='lead1.html?product=私有化部署'" class="bg-white p-10 md:p-14 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/40 fade-up-element delay-3 flex flex-col text-center cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-3 text-slate-800">数据安全与增值</h3>
+                        <p class="text-slate-500 mb-8 md:mb-10 font-medium text-base md:text-lg">针对政企客户定制化</p>
+                        <ul class="space-y-4 md:space-y-6 text-slate-600 font-medium text-base md:text-lg mt-auto max-w-md mx-auto w-full">
+                            <li class="flex justify-between border-b border-slate-50 pb-3"><span>私有化部署</span> <span class="text-slate-900 font-bold text-lg md:text-xl">30-100万元</span></li>
+                            <li class="flex justify-between border-b border-slate-50 pb-3"><span>年度安全运维</span> <span class="text-slate-900 font-bold text-lg md:text-xl">10%-15%</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 研发团队 -->
+        <!-- ============ 研发团队 ============ -->
         <section id="team" class="w-full min-h-screen snap-start flex flex-col justify-between pt-28 pb-8 md:pt-40 md:pb-12 relative">
             <div class="max-w-7xl mx-auto px-6 w-full my-auto">
                 <div class="text-center mb-12 md:mb-20 fade-up-element">
-                    <h2 class="text-4xl md:text-5xl font-extrabold mb-4 md:mb-6 text-white tracking-tight">核心研发团队</h2>
-                    <p class="text-cyan-200/80 text-base md:text-xl bg-slate-800/40 backdrop-blur-sm inline-block px-6 md:px-8 py-2 md:py-3 rounded-full border border-slate-600/60">光脉智联团队由光电感知、大数据安全、商业化运营及智能制造领域的专家组成</p>
+                    <h2 class="text-4xl md:text-5xl font-extrabold mb-4 md:mb-6 text-slate-900 tracking-tight">核心研发团队</h2>
+                    <p class="text-slate-600 text-base md:text-xl bg-white/50 backdrop-blur-sm inline-block px-6 md:px-8 py-2 md:py-3 rounded-full border border-slate-200/50 max-w-3xl">
+                        光脉智联团队由光电感知、大数据安全、商业化运营及智能制造领域的专家组成
+                    </p>
                 </div>
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 items-stretch">
-                    <div onclick="openModal('modal-liujunteng')" class="bg-slate-800/50 backdrop-blur-md p-8 md:p-10 rounded-[2rem] shadow-xl border border-slate-700/50 hover:border-cyan-400/70 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group hover:-translate-y-2 flex flex-col items-center">
-                        <div class="w-24 h-24 md:w-28 md:h-28 bg-gradient-to-br from-slate-700 to-slate-800 rounded-full mx-auto flex items-center justify-center mb-5 md:mb-6 group-hover:scale-105 group-hover:ring-4 group-hover:ring-cyan-500/50 transition-all duration-300 overflow-hidden shadow-lg">
-                            <img src="./images/1.jpg" alt="刘骏腾" class="w-full h-full object-cover opacity-90">
+                    <!-- 刘骏腾 -->
+                    <div onclick="openModal('modal-liujunteng')" class="bg-white/80 backdrop-blur-md p-8 md:p-10 lg:p-8 xl:p-10 rounded-[2rem] shadow-xl border border-white hover:border-orange-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-1 hover:-translate-y-2 flex flex-col items-center justify-start h-full">
+                        <div class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 bg-gradient-to-br from-slate-100 to-slate-50 rounded-full mx-auto flex items-center justify-center font-black text-xl md:text-2xl mb-5 md:mb-6 lg:mb-8 group-hover:scale-105 group-hover:ring-4 group-hover:ring-orange-200 transition-all duration-300 shadow-inner overflow-hidden flex-shrink-0">
+                            <img src="./images/1.jpg" alt="刘骏腾 头像" class="w-full h-full object-cover">
                         </div>
-                        <h4 class="font-bold text-lg md:text-xl text-white mb-1">刘骏腾</h4>
-                        <p class="text-cyan-400 text-sm md:text-base font-semibold">团队负责人</p>
+                        <h4 class="font-bold text-lg md:text-xl lg:text-2xl mb-1 md:mb-2 text-slate-900">刘骏腾</h4>
+                        <p class="text-orange-700 text-sm md:text-base font-semibold">团队负责人</p>
                     </div>
-                    <div onclick="openModal('modal-wangxi')" class="bg-slate-800/50 backdrop-blur-md p-8 md:p-10 rounded-[2rem] shadow-xl border border-slate-700/50 hover:border-cyan-400/70 transition-all duration-300 cursor-pointer text-center group hover:-translate-y-2 flex flex-col items-center">
-                        <div class="w-24 h-24 md:w-28 md:h-28 bg-gradient-to-br from-slate-700 to-slate-800 rounded-full mx-auto flex items-center justify-center mb-5 md:mb-6 group-hover:scale-105 group-hover:ring-4 group-hover:ring-cyan-500/50 overflow-hidden"><img src="./images/2.jpg" class="w-full h-full object-cover"></div>
-                        <h4 class="font-bold text-lg md:text-xl text-white mb-1">王曦</h4>
-                        <p class="text-cyan-400 text-sm md:text-base font-semibold">前端交互架构</p>
+                    <!-- 王曦 -->
+                    <div onclick="openModal('modal-wangxi')" class="bg-white/80 backdrop-blur-md p-8 md:p-10 lg:p-8 xl:p-10 rounded-[2rem] shadow-xl border border-white hover:border-orange-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-2 hover:-translate-y-2 flex flex-col items-center justify-start h-full">
+                        <div class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 bg-gradient-to-br from-slate-100 to-slate-50 rounded-full mx-auto flex items-center justify-center font-black text-xl md:text-2xl mb-5 md:mb-6 lg:mb-8 group-hover:scale-105 group-hover:ring-4 group-hover:ring-orange-200 transition-all duration-300 shadow-inner overflow-hidden flex-shrink-0">
+                            <img src="./images/2.jpg" alt="王曦 头像" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold text-lg md:text-xl lg:text-2xl mb-1 md:mb-2 text-slate-900">王曦</h4>
+                        <p class="text-orange-700 text-sm md:text-base font-semibold">前端交互架构</p>
                     </div>
-                    <div onclick="openModal('modal-chenyifu')" class="bg-slate-800/50 backdrop-blur-md p-8 md:p-10 rounded-[2rem] shadow-xl border border-slate-700/50 hover:border-cyan-400/70 transition-all duration-300 cursor-pointer text-center group hover:-translate-y-2 flex flex-col items-center">
-                        <div class="w-24 h-24 md:w-28 md:h-28 bg-gradient-to-br from-slate-700 to-slate-800 rounded-full mx-auto flex items-center justify-center mb-5 md:mb-6 group-hover:scale-105 group-hover:ring-4 group-hover:ring-cyan-500/50 overflow-hidden"><img src="./images/3.jpg" class="w-full h-full object-cover"></div>
-                        <h4 class="font-bold text-lg md:text-xl text-white mb-1">陈钇夫</h4>
-                        <p class="text-cyan-400 text-sm md:text-base font-semibold">商业化运营</p>
+                    <!-- 陈钇夫 -->
+                    <div onclick="openModal('modal-chenyifu')" class="bg-white/80 backdrop-blur-md p-8 md:p-10 lg:p-8 xl:p-10 rounded-[2rem] shadow-xl border border-white hover:border-orange-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-3 hover:-translate-y-2 flex flex-col items-center justify-start h-full">
+                        <div class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 bg-gradient-to-br from-slate-100 to-slate-50 rounded-full mx-auto flex items-center justify-center font-black text-xl md:text-2xl mb-5 md:mb-6 lg:mb-8 group-hover:scale-105 group-hover:ring-4 group-hover:ring-orange-200 transition-all duration-300 shadow-inner overflow-hidden flex-shrink-0">
+                            <img src="./images/3.jpg" alt="陈钇夫 头像" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold text-lg md:text-xl lg:text-2xl mb-1 md:mb-2 text-slate-900">陈钇夫</h4>
+                        <p class="text-orange-700 text-sm md:text-base font-semibold">商业化运营</p>
                     </div>
-                    <div onclick="openModal('modal-xingyanran')" class="bg-slate-800/50 backdrop-blur-md p-8 md:p-10 rounded-[2rem] shadow-xl border border-slate-700/50 hover:border-cyan-400/70 transition-all duration-300 cursor-pointer text-center group hover:-translate-y-2 flex flex-col items-center">
-                        <div class="w-24 h-24 md:w-28 md:h-28 bg-gradient-to-br from-slate-700 to-slate-800 rounded-full mx-auto flex items-center justify-center mb-5 md:mb-6 group-hover:scale-105 group-hover:ring-4 group-hover:ring-cyan-500/50 overflow-hidden"><img src="./images/4.jpg" class="w-full h-full object-cover"></div>
-                        <h4 class="font-bold text-lg md:text-xl text-white mb-1">邢嫣然</h4>
-                        <p class="text-cyan-400 text-sm md:text-base font-semibold">底层架构安全</p>
+                    <!-- 邢嫣然 -->
+                    <div onclick="openModal('modal-xingyanran')" class="bg-white/80 backdrop-blur-md p-8 md:p-10 lg:p-8 xl:p-10 rounded-[2rem] shadow-xl border border-white hover:border-orange-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-4 hover:-translate-y-2 flex flex-col items-center justify-start h-full">
+                        <div class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 bg-gradient-to-br from-slate-100 to-slate-50 rounded-full mx-auto flex items-center justify-center font-black text-xl md:text-2xl mb-5 md:mb-6 lg:mb-8 group-hover:scale-105 group-hover:ring-4 group-hover:ring-orange-200 transition-all duration-300 shadow-inner overflow-hidden flex-shrink-0">
+                            <img src="./images/4.jpg" alt="邢嫣然 头像" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold text-lg md:text-xl lg:text-2xl mb-1 md:mb-2 text-slate-900">邢嫣然</h4>
+                        <p class="text-orange-700 text-sm md:text-base font-semibold">底层架构安全</p>
                     </div>
-                    <div onclick="openModal('modal-tanzan')" class="bg-slate-800/50 backdrop-blur-md p-8 md:p-10 rounded-[2rem] shadow-xl border border-slate-700/50 hover:border-cyan-400/70 transition-all duration-300 cursor-pointer text-center group hover:-translate-y-2 flex flex-col items-center">
-                        <div class="w-24 h-24 md:w-28 md:h-28 bg-gradient-to-br from-slate-700 to-slate-800 rounded-full mx-auto flex items-center justify-center mb-5 md:mb-6 group-hover:scale-105 group-hover:ring-4 group-hover:ring-cyan-500/50 overflow-hidden"><img src="./images/5.jpg" class="w-full h-full object-cover"></div>
-                        <h4 class="font-bold text-lg md:text-xl text-white mb-1">田赞</h4>
-                        <p class="text-cyan-400 text-sm md:text-base font-semibold">生产制造落地</p>
+                    <!-- 田赞 -->
+                    <div onclick="openModal('modal-tanzan')" class="bg-white/80 backdrop-blur-md p-8 md:p-10 lg:p-8 xl:p-10 rounded-[2rem] shadow-xl border border-white hover:border-orange-400 hover:shadow-2xl transition-all duration-300 cursor-pointer text-center group fade-up-element delay-5 hover:-translate-y-2 flex flex-col items-center justify-start h-full">
+                        <div class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 bg-gradient-to-br from-slate-100 to-slate-50 rounded-full mx-auto flex items-center justify-center font-black text-xl md:text-2xl mb-5 md:mb-6 lg:mb-8 group-hover:scale-105 group-hover:ring-4 group-hover:ring-orange-200 transition-all duration-300 shadow-inner overflow-hidden flex-shrink-0">
+                            <img src="./images/5.jpg" alt="田赞 头像" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold text-lg md:text-xl lg:text-2xl mb-1 md:mb-2 text-slate-900">田赞</h4>
+                        <p class="text-orange-700 text-sm md:text-base font-semibold">生产制造落地</p>
                     </div>
                 </div>
             </div>
-            <footer class="w-full text-gray-500 font-medium text-sm md:text-base text-center pt-8 md:pt-10 pb-4 md:pb-6 relative z-20 border-t border-slate-800/50 mt-8 md:mt-auto">
-                <p>© 2026 光脉智联 - 深蓝智感 | 光纤织网智守城脉. 城市生命线守护者.</p>
+
+            <footer class="w-full text-slate-400 font-medium text-sm md:text-base text-center pt-8 md:pt-10 pb-4 md:pb-6 relative z-20 border-t border-slate-100 mt-8 md:mt-auto">
+                <p>© 2026 光脉智联 - 光纤织网智守城脉团队. All rights reserved.</p>
             </footer>
         </section>
+
     </div>
 
-    <!-- 弹窗部分 (深色风格) -->
-    <dialog id="modal-liujunteng" class="rounded-[2rem]"><div class="bg-slate-800 rounded-[2rem] p-8 md:p-12 shadow-2xl border border-slate-600 max-w-xl w-[90vw] mx-auto"><div class="flex flex-col items-center"><div class="w-32 h-40 bg-slate-700 rounded-2xl overflow-hidden mb-6 flex items-center justify-center"><img src="./images/liujunteng.jpg" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x500?text=刘骏腾'"></div><h3 class="text-3xl text-white font-extrabold">刘骏腾</h3><p class="text-cyan-400 font-bold bg-slate-700/60 px-4 py-2 rounded-full mt-2 mb-6">团队负责人 / 核心技术研发</p><p class="text-gray-300 text-center mb-8">光电信息科学与工程专业。深耕分布式光纤传感技术研究数年，主导分布式光纤声学传感（DAS）系统及高灵敏度核心解调部件的底层技术研发。在结构增敏与空间压缩感知领域拥有多项核心技术突破。</p><button onclick="closeModal('modal-liujunteng')" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full font-bold hover:shadow-lg transition-all w-full">返回主页</button></div></div></dialog>
-    <dialog id="modal-wangxi" class="rounded-[2rem]"><div class="bg-slate-800 rounded-[2rem] p-8 md:p-12 border border-slate-600 max-w-xl"><div class="flex flex-col items-center"><div class="w-32 h-40 bg-slate-700 rounded-2xl overflow-hidden mb-6"><img src="./images/wangxi.jpg" class="w-full h-full object-cover"></div><h3 class="text-3xl text-white font-extrabold">王曦</h3><p class="text-cyan-400 font-bold bg-slate-700/60 px-4 py-2 rounded-full mt-2 mb-6">Web 前端架构与交互</p><p class="text-gray-300 text-center mb-8">负责光纤传感安全监测系统的一线前端架构设计。专注于海量并发物联网数据的实时图形化渲染与大屏数字孪生呈现，利用高级交互动效打造高效、直观的城市生命线监测可视化界面。</p><button onclick="closeModal('modal-wangxi')" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full font-bold w-full">返回主页</button></div></div></dialog>
-    <dialog id="modal-chenyifu" class="rounded-[2rem]"><div class="bg-slate-800 rounded-[2rem] p-8 md:p-12 border border-slate-600"><div class="flex flex-col items-center"><div class="w-32 h-40 bg-slate-700 rounded-2xl overflow-hidden mb-6"><img src="./images/chenyifu.jpg" class="w-full h-full object-cover"></div><h3 class="text-3xl text-white font-extrabold">陈钇夫</h3><p class="text-cyan-400 font-bold bg-slate-700/60 px-4 py-2 rounded-full mt-2 mb-6">商业化运营总责</p><p class="text-gray-300 text-center mb-8">主导本项目的全球市场定位与 B端拓客营销策略。长期对接各地市政工程、国家骨干管网及清洁能源集团等核心头部渠道，成功构建并推行了项目独创的“基础硬件建设+SaaS订阅服务+安全增值”三维盈利商业生态。</p><button onclick="closeModal('modal-chenyifu')" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full font-bold w-full">返回主页</button></div></div></dialog>
-    <dialog id="modal-xingyanran" class="rounded-[2rem]"><div class="bg-slate-800 rounded-[2rem] p-8 md:p-12 border border-slate-600"><div class="flex flex-col items-center"><div class="w-32 h-40 bg-slate-700 rounded-2xl overflow-hidden mb-6"><img src="./images/xingyanran.jpg" class="w-full h-full object-cover"></div><h3 class="text-3xl text-white font-extrabold">邢嫣然</h3><p class="text-cyan-400 font-bold bg-slate-700/60 px-4 py-2 rounded-full mt-2 mb-6">底层架构安全与保密</p><p class="text-gray-300 text-center mb-8">构建系统顶级的底层数据反劫持与数据防护体系。专攻城市脉络海量安全监测敏感数据的加密算法，基于商用国密 SM4 加密标准，为主导产品量身定制了全链路的零信任网络架构防护。</p><button onclick="closeModal('modal-xingyanran')" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full font-bold w-full">返回主页</button></div></div></dialog>
-    <dialog id="modal-tanzan" class="rounded-[2rem]"><div class="bg-slate-800 rounded-[2rem] p-8 md:p-12 border border-slate-600"><div class="flex flex-col items-center"><div class="w-32 h-40 bg-slate-700 rounded-2xl overflow-hidden mb-6"><img src="./images/tianzan.jpg" class="w-full h-full object-cover"></div><h3 class="text-3xl text-white font-extrabold">田赞</h3><p class="text-cyan-400 font-bold bg-slate-700/60 px-4 py-2 rounded-full mt-2 mb-6">生产制造与技术落地</p><p class="text-gray-300 text-center mb-8">应用物理学专业。全面负责核心硬件传感样机的试制、供应链管理与工业化生产工艺优化。致力于缩短从实验室研究成果到量产工业级安全设备的转化周期，确保设备部件 100%国产化替代方案的高效闭环。</p><button onclick="closeModal('modal-tanzan')" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full font-bold w-full">返回主页</button></div></div></dialog>
+    <!-- ============ 弹窗 Modals ============ -->
+    <!-- 刘骏腾 -->
+    <dialog id="modal-liujunteng">
+        <div class="modal-inner bg-white rounded-[2rem] p-8 md:p-12 shadow-2xl border border-slate-100 max-w-xl w-[90vw] mx-auto overflow-y-auto max-h-[85vh]">
+            <div class="flex flex-col items-center">
+                <div class="w-32 h-40 md:w-40 md:h-52 bg-slate-100 rounded-2xl shadow-inner mb-6 md:mb-8 overflow-hidden border-4 border-white flex items-center justify-center ring-2 ring-slate-100 flex-shrink-0">
+                    <img src="./images/liujunteng.jpg" alt="刘骏腾 证件照" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2 md:mb-3">刘骏腾</h3>
+                <p class="text-orange-700 font-bold bg-orange-50 px-4 md:px-5 py-2 rounded-full text-sm md:text-base mb-6 md:mb-8 tracking-wide">团队负责人 / 核心技术研发</p>
+                <p class="text-slate-600 text-base md:text-lg leading-relaxed text-center mb-8 md:mb-10 max-w-lg">光电信息科学与工程专业。深耕分布式光纤传感技术研究数年，主导分布式光纤声学传感（DAS）系统及高灵敏度核心解调部件的底层技术研发。在结构增敏与空间压缩感知领域拥有多项核心技术突破。</p>
+                <button onclick="closeModal('modal-liujunteng')" class="px-8 md:px-10 py-3 md:py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 w-full text-base md:text-lg">返回主页</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- 王曦 -->
+    <dialog id="modal-wangxi">
+        <div class="modal-inner bg-white rounded-[2rem] p-8 md:p-12 shadow-2xl border border-slate-100 max-w-xl w-[90vw] mx-auto overflow-y-auto max-h-[85vh]">
+            <div class="flex flex-col items-center">
+                <div class="w-32 h-40 md:w-40 md:h-52 bg-slate-100 rounded-2xl shadow-inner mb-6 md:mb-8 overflow-hidden border-4 border-white flex items-center justify-center ring-2 ring-slate-100 flex-shrink-0">
+                    <img src="./images/wangxi.jpg" alt="王曦 证件照" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2 md:mb-3">王曦</h3>
+                <p class="text-orange-700 font-bold bg-orange-50 px-4 md:px-5 py-2 rounded-full text-sm md:text-base mb-6 md:mb-8 tracking-wide">Web 前端架构与交互</p>
+                <p class="text-slate-600 text-base md:text-lg leading-relaxed text-center mb-8 md:mb-10 max-w-lg">负责光纤传感安全监测系统的一线前端架构设计。专注于海量并发物联网数据的实时图形化渲染与大屏数字孪生呈现，利用高级交互动效打造高效、直观的城市生命线监测可视化界面。</p>
+                <button onclick="closeModal('modal-wangxi')" class="px-8 md:px-10 py-3 md:py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 w-full text-base md:text-lg">返回主页</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- 陈钇夫 -->
+    <dialog id="modal-chenyifu">
+        <div class="modal-inner bg-white rounded-[2rem] p-8 md:p-12 shadow-2xl border border-slate-100 max-w-xl w-[90vw] mx-auto overflow-y-auto max-h-[85vh]">
+            <div class="flex flex-col items-center">
+                <div class="w-32 h-40 md:w-40 md:h-52 bg-slate-100 rounded-2xl shadow-inner mb-6 md:mb-8 overflow-hidden border-4 border-white flex items-center justify-center ring-2 ring-slate-100 flex-shrink-0">
+                    <img src="./images/chenyifu.jpg" alt="陈钇夫 证件照" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2 md:mb-3">陈钇夫</h3>
+                <p class="text-orange-700 font-bold bg-orange-50 px-4 md:px-5 py-2 rounded-full text-sm md:text-base mb-6 md:mb-8 tracking-wide">商业化运营总责</p>
+                <p class="text-slate-600 text-base md:text-lg leading-relaxed text-center mb-8 md:mb-10 max-w-lg">主导本项目的全球市场定位与 B端 拓客营销策略。长期对接各地市政工程、国家骨干管网及清洁能源集团等核心头部渠道，成功构建并推行了项目独创的“基础硬件建设+SaaS订阅服务+安全增值”三维盈利商业生态。</p>
+                <button onclick="closeModal('modal-chenyifu')" class="px-8 md:px-10 py-3 md:py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 w-full text-base md:text-lg">返回主页</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- 邢嫣然 -->
+    <dialog id="modal-xingyanran">
+        <div class="modal-inner bg-white rounded-[2rem] p-8 md:p-12 shadow-2xl border border-slate-100 max-w-xl w-[90vw] mx-auto overflow-y-auto max-h-[85vh]">
+            <div class="flex flex-col items-center">
+                <div class="w-32 h-40 md:w-40 md:h-52 bg-slate-100 rounded-2xl shadow-inner mb-6 md:mb-8 overflow-hidden border-4 border-white flex items-center justify-center ring-2 ring-slate-100 flex-shrink-0">
+                    <img src="./images/xingyanran.jpg" alt="邢嫣然 证件照" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2 md:mb-3">邢嫣然</h3>
+                <p class="text-orange-700 font-bold bg-orange-50 px-4 md:px-5 py-2 rounded-full text-sm md:text-base mb-6 md:mb-8 tracking-wide">底层架构安全与保密技术</p>
+                <p class="text-slate-600 text-base md:text-lg leading-relaxed text-center mb-8 md:mb-10 max-w-lg">构建系统顶级的底层数据反劫持与数据防护体系。专攻城市脉络海量安全监测敏感数据的加密算法，基于商用国密 SM4 加密标准，为主导产品量身定制了全链路的零信任网络架构防护。</p>
+                <button onclick="closeModal('modal-xingyanran')" class="px-8 md:px-10 py-3 md:py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 w-full text-base md:text-lg">返回主页</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- 田赞 -->
+    <dialog id="modal-tanzan">
+        <div class="modal-inner bg-white rounded-[2rem] p-8 md:p-12 shadow-2xl border border-slate-100 max-w-xl w-[90vw] mx-auto overflow-y-auto max-h-[85vh]">
+            <div class="flex flex-col items-center">
+                <div class="w-32 h-40 md:w-40 md:h-52 bg-slate-100 rounded-2xl shadow-inner mb-6 md:mb-8 overflow-hidden border-4 border-white flex items-center justify-center ring-2 ring-slate-100 flex-shrink-0">
+                    <img src="./images/tianzan.jpg" alt="田赞 证件照" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2 md:mb-3">田赞</h3>
+                <p class="text-orange-700 font-bold bg-orange-50 px-4 md:px-5 py-2 rounded-full text-sm md:text-base mb-6 md:mb-8 tracking-wide">生产制造与技术落地</p>
+                <p class="text-slate-600 text-base md:text-lg leading-relaxed text-center mb-8 md:mb-10 max-w-lg">应用物理学专业。全面负责核心硬件传感样机的试制、供应链管理与工业化生产工艺优化。致力于缩短从实验室研究成果到量产工业级安全设备的转化周期，确保设备部件 100%国产化替代方案的高效闭环。</p>
+                <button onclick="closeModal('modal-tanzan')" class="px-8 md:px-10 py-3 md:py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 w-full text-base md:text-lg">返回主页</button>
+            </div>
+        </div>
+    </dialog>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // ---- 1. 滚动动画监听 ----
+            const observerOptions = {
+                root: document.querySelector('.scroll-container'),
+                rootMargin: '0px',
+                threshold: 0.2
+            };
+
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('section-active'); });
-            }, { root: document.querySelector('.scroll-container'), threshold: 0.2 });
-            document.querySelectorAll('section').forEach(section => observer.observe(section));
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('section-active');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+
+            // ---- 2. 弹窗点击背景关闭 ----
             document.querySelectorAll('dialog').forEach(dialog => {
-                dialog.addEventListener('click', (e) => {
+                dialog.addEventListener('click', function(e) {
                     const rect = dialog.getBoundingClientRect();
-                    if (!(e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom)) dialog.close();
+                    const isInDialog = (
+                        e.clientX >= rect.left &&
+                        e.clientX <= rect.right &&
+                        e.clientY >= rect.top &&
+                        e.clientY <= rect.bottom
+                    );
+                    if (!isInDialog) {
+                        dialog.close();
+                    }
                 });
             });
-            const menuBtn = document.getElementById('mobile-menu-btn'), mobileMenu = document.getElementById('mobile-menu');
-            if(menuBtn && mobileMenu) {
-                menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-                document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+            // ---- 3. 移动端菜单切换逻辑 ----
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            if(mobileMenuBtn && mobileMenu) {
+                // 点击汉堡按钮展开/收起
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+                
+                // 点击菜单链接后自动收起
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
             }
         });
-        function openModal(id) { document.getElementById(id)?.showModal(); }
-        function closeModal(id) { document.getElementById(id)?.close(); }
+
+        // ---- 4. 弹窗开闭函数 ----
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) modal.showModal();
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) modal.close();
+        }
     </script>
 </body>
 </html>
